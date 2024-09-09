@@ -1,0 +1,29 @@
+@import 'bootstrap/dist/css/bootstrap.css';
+@import url('all.min.css');
+
+:root{
+    --blue: #163756;
+    --lightblue: #3078BC;
+    --yelow: #E7AF19;
+}
+
+body{
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    overflow-x: hidden;
+}
+
+.row{
+    width: 100% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.nav-link {
+    font-weight: 200;
+    color: var(--blue);
+}
+
+.bg-blue-gradient{
+    background: linear-gradient( to right, var(--blue), var(--lightblue) );
+}
