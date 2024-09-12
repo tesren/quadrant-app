@@ -1,5 +1,6 @@
 @import 'bootstrap/dist/css/bootstrap.css';
 @import url('all.min.css');
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 :root{
     --blue: #163756;
@@ -11,6 +12,29 @@ body{
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
     overflow-x: hidden;
+    color: var(--blue);
+}
+
+.fs-0{
+    font-size: 60px;
+}
+
+.mt-6{
+    margin-top: 6rem !important;
+}
+
+.mb-6{
+    margin-bottom: 6rem !important;
+}
+
+.my-6{
+    margin-top: 6ch !important;
+    margin-bottom: 6rem !important;
+}
+
+.bg-blue{
+    background-color: var(--blue) !important;
+    color: white !important;
 }
 
 .row{
@@ -24,6 +48,115 @@ body{
     color: var(--blue);
 }
 
+.text-yellow{
+    color: var(--yelow);
+}
+
+.text-blue{
+    color: var(--blue);
+}
+
 .bg-blue-gradient{
-    background: linear-gradient( to right, var(--blue), var(--lightblue) );
+    color: white;
+    background: linear-gradient(150deg, var(--blue), var(--lightblue) );
+}
+
+.btn-light {
+    --bs-btn-color: var(--blue);
+    --bs-btn-hover-color: var(--blue);
+    --bs-btn-active-color: var(--blue);
+    --bs-btn-disabled-color: var(--blue);
+    --bs-btn-border-color: var(--blue);
+}
+
+.blue-hr{
+    color: var(--blue);
+    opacity: 1;
+    border-bottom: 1px solid var(--blue);
+}
+
+.btn-blue{
+    background-color: var(--blue);
+    color: white;
+}
+
+.btn-blue:hover{
+    background-color: #0a2239;
+    color: white;
+    transition: 0.3s;
+}
+
+.amenity-pin{
+    position: absolute;
+    width: 40px;
+}
+
+.form-control {
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
+}
+
+.home-img{
+    height: 91vh;
+}
+
+.bg-blue-map{
+    background: inherit;
+}
+
+.amenities-map-text{
+    color: white;
+}
+
+.page-link.active, .active > .page-link {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.page-link {
+    color: var(--blue);
+}
+
+@media (max-width: 992px) {
+
+    .mt-6{
+        margin-top: 3.5rem !important;
+    }
+    
+    .mb-6{
+        margin-bottom: 3.5rem !important;
+    }
+    
+    .my-6{
+        margin-top: 3.5rem !important;
+        margin-bottom: 3.5rem !important;
+    }
+
+    .fs-0{
+        font-size: 2.5rem;
+    }
+
+    .home-img{
+        height: 75vh;
+    }
+
+    .amenity-pin{
+        width: 25px;
+    }
+
+    .bg-blue-map{
+        background: linear-gradient(150deg, var(--blue), var(--lightblue) );
+    }
+
+    .amenities-map-text{
+        color: var(--blue);
+    }
 }

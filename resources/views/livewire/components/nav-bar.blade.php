@@ -1,6 +1,6 @@
-<div>
+<div class="sticky-top">
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
-    <nav class="navbar navbar-expand-xl bg-white sticky-top shadow">
+    <nav class="navbar navbar-expand-xl bg-white">
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{route('pages.home')}}" wire:navigate>
@@ -14,7 +14,9 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
                 <div class="offcanvas-header">
-                    <div class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</div>
+                    <div class="offcanvas-title" id="offcanvasNavbarLabel">
+                        <img src="{{asset('/img/full-logo-quadrant.svg')}}" alt="Logo de Quadrant Luxury Ocean Living" class="w-100">
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 
@@ -23,11 +25,11 @@
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link fs-5" href="#" wire:navigate>{{__('Inventario')}}</a>
+                            <a class="nav-link fs-5" href="{{route('pages.search')}}" wire:navigate>{{__('Inventario')}}</a>
                         </li>
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link fs-5" href="#" wire:navigate>{{__('Estilo de vida')}}</a>
+                            <a class="nav-link fs-5" href="{{route('pages.lifestyle')}}" wire:navigate>{{__('Estilo de vida')}}</a>
                         </li>
 
                         <li class="nav-item me-0 me-lg-4">
@@ -45,7 +47,24 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item me-0 me-lg-4">
+                            <a class="nav-link" href="#" wire:navigate>
+                                <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                            </a>
+                        </li>
+
                     </ul>
+
+                    {{-- Redes sociales solo en móvil --}}
+                    <div class="text-center fs-2 d-block d-lg-none mt-4">
+                        <a href="https://www.instagram.com/domus_vallarta/" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-blue me-2">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+            
+                        <a href="https://www.facebook.com/DomusVallartaInmobiliaria" target="_blank" rel="noopener noreferrer" class="text-decoration-none text-blue">
+                            <i class="fa-brands fa-square-facebook"></i>
+                        </a>
+                    </div>
 
                 </div>
 

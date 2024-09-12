@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Livewire\HomePage;
+use App\Livewire\UnitPage;
+use App\Livewire\SearchPage;
+use App\Livewire\LifestylePage;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -16,6 +19,9 @@ use App\Livewire\HomePage;
 */
 
 Route::get('/', HomePage::class)->name('pages.home');
+Route::get('/buscar-condominios', SearchPage::class)->name('pages.search');
+Route::get('/condominio-en-venta'.'/{name}', UnitPage::class)->name('pages.unit');
+Route::get('estilo-de-vida', LifestylePage::class)->name('pages.lifestyle');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

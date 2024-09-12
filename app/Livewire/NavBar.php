@@ -8,6 +8,6 @@ class NavBar extends Component
 {
     public function render()
     {
-        return view('livewire.nav-bar');
+        return view('livewire.components.nav-bar');
     }
 }
