@@ -25,7 +25,7 @@
         <img src="{{asset('img/home-quadrant.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
 
         <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block">
-            <a href="#" class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
+            <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
                 <i class="fa-solid fa-building"></i> {{__('Inventario')}}
             </a>
         </div>
@@ -40,7 +40,7 @@
     </div>
 
     <div class="text-center mb-6 d-block d-lg-none">
-        <a href="#" class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
+        <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
             <i class="fa-solid fa-building"></i> {{__('Ver Inventario')}}
         </a>
     </div>
