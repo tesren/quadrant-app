@@ -125,6 +125,17 @@ body{
     color: var(--blue);
 }
 
+.poly-location{
+    fill: var(--yelow);
+    mix-blend-mode: hard-light;
+    stroke-width: 3px;
+    stroke: white;
+}
+
+.navbar-nav .nav-link.active{
+    border-bottom: 2px solid var(--blue);
+}
+
 @media (max-width: 992px) {
 
     .mt-6{

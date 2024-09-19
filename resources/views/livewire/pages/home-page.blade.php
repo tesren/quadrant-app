@@ -80,8 +80,12 @@
             </picture>
 
 
-            <a href="#" class="btn btn-blue fs-4 position-absolute bottom-0 end-0 rounded-4 py-2 px-5 px-lg-4 me-3"><i class="fa-solid fa-image"></i> {{__('Galería')}}</a>
+            <a href="#gallery-1" class="btn btn-blue fs-4 position-absolute bottom-0 end-0 rounded-4 py-2 px-5 px-lg-4 me-3"><i class="fa-solid fa-image"></i> {{__('Galería')}}</a>
         </div>
+     
+        @for ($i=1; $i<13; $i++)
+            <img src="{{asset('img/home-gallery/home-gallery-'.$i.'.webp')}}" alt="{{__('Galería')}} Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery">
+        @endfor
 
     </div>
 

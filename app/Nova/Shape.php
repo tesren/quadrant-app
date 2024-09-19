@@ -66,8 +66,8 @@ class Shape extends Resource
 
             Text::make('Puntos', 'points')->rules('required')->help('Puntos del polígono'),
 
-            Number::make('Texto X', 'text_x')->rules('required')->min(0)->step(0.1)->help('Posición en X del texto del polígono'),
-            Number::make('Texto Y', 'text_y')->rules('required')->min(0)->step(0.1)->help('Posición en Y del texto del polígono'),
+            Number::make('Texto X', 'text_x')->min(0)->step(0.1)->help('Posición en X del texto del polígono'),
+            Number::make('Texto Y', 'text_y')->min(0)->step(0.1)->help('Posición en Y del texto del polígono'),
         ];
     }
 

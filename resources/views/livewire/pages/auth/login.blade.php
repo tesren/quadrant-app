@@ -24,6 +24,10 @@ $login = function () {
 ?>
 
 <div>
+
+    <h1 class="mb-0 text-3xl font-bold">{{__('Inicia sesión')}}</h1>
+    <p class="mb-4">{{__('Entra a tu cuenta')}}</p>
+
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -50,10 +54,14 @@ $login = function () {
         <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember" class="inline-flex items-center">
-                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-sky-700 shadow-sm focus:ring-sky-700" name="remember">
                 <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
             </label>
         </div>
+
+        <x-primary-button class="w-full mt-4">
+            {{ __('Entrar') }}
+        </x-primary-button>
 
         <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
@@ -61,10 +69,6 @@ $login = function () {
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
         </div>
     </form>
 </div>

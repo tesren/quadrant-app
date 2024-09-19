@@ -22,18 +22,23 @@
                 
                 <div class="offcanvas-body">
 
+                    @php
+                        $route = Route::currentRouteName();
+                        $lang = app()->getLocale();
+                    @endphp
+
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link fs-5" href="{{route('pages.search')}}" wire:navigate>{{__('Inventario')}}</a>
+                            <a class="nav-link fs-5 @if( strpos($route, 'search') != false) active @endif" href="{{route('pages.search')}}" wire:navigate>{{__('Inventario')}}</a>
                         </li>
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link fs-5" href="{{route('pages.lifestyle')}}" wire:navigate>{{__('Estilo de vida')}}</a>
+                            <a class="nav-link fs-5 @if( strpos($route, 'lifestyle') != false) active @endif" href="{{route('pages.lifestyle')}}" wire:navigate>{{__('Estilo de vida')}}</a>
                         </li>
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link fs-5" href="#" wire:navigate>{{__('Contacto')}}</a>
+                            <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact') }}" wire:navigate>{{__('Contacto')}}</a>
                         </li>
 
                         <li class="nav-item dropdown me-0 me-lg-4">
@@ -48,9 +53,36 @@
                         </li>
 
                         <li class="nav-item me-0 me-lg-4">
-                            <a class="nav-link" href="#" wire:navigate>
-                                <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
-                            </a>
+        
+                            @if ($lang == 'en')
+                                @if($route != 'en.pages.unit' and $route != 'es.livewire.update')
+        
+                                    <a href="{{$url = route($route, request()->query(), true, 'es')}}" wire:navigate class="d-block align-self-center me-0 me-lg-3 link-light fs-4" title="{{__('Cambiar idioma')}}" data-bs-toggle="tooltip" data-bs-title="{{__('Cambiar idioma')}}">
+                                        <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                                    </a>
+                                @else
+        
+                                    <a class="d-block align-self-center me-0 me-lg-3 link-light fs-4" title="{{__('Cambiar idioma')}}" wire:navigate href="{{$url = route('pages.unit', ['name'=>$unit_name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'es');}}" data-bs-toggle="tooltip" data-bs-title="{{__('Cambiar idioma')}}">
+                                        <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                                    </a>
+        
+                                @endif
+        
+                            @else
+                                @if($route != 'es.pages.unit' and $route != 'es.livewire.update')
+        
+                                    <a href="{{$url = route($route, request()->query(), true, 'en')}}" wire:navigate class="d-block align-self-center me-0 me-lg-3 link-light fs-4" title="{{__('Cambiar idioma')}}" data-bs-toggle="tooltip" data-bs-title="{{__('Cambiar idioma')}}">
+                                        <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                                    </a>
+        
+                                @else
+                                    
+                                    <a class="d-block align-self-center me-0 me-lg-3 link-light fs-4" title="{{__('Cambiar idioma')}}" wire:navigate href="{{$url = route('pages.unit', ['name'=>$unit_name, 'utm_campaign' => request()->query('utm_campaign'), 'utm_source' => request()->query('utm_source'), 'utm_medium' => request()->query('utm_medium')], true, 'en');}}" data-bs-toggle="tooltip" data-bs-title="{{__('Cambiar idioma')}}">
+                                        <img width="25px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                                    </a>
+        
+                                @endif
+                            @endif
                         </li>
 
                     </ul>
@@ -71,5 +103,12 @@
             </div>
         </div>
     </nav>
+
+    @script
+        <script>
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+        </script>
+    @endscript
 
 </div>
