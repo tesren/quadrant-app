@@ -2,7 +2,7 @@
     {{-- A good traveler has no fixed plans and is not intent upon arriving. --}}
     @section('titles')
         <title>{{__('Contacto')}} - Quadrant Luxury Ocean Living</title>
-        <meta name="description" content="">
+        <meta name="description" content="{{__('Contacta a un agente inmobiliario en Quadrant Luxury Ocean Living. Completa el formulario de contacto y recibe información personalizada sobre los condominios disponibles en Bucerías.')}}">
     @endsection
 
     <div class="position-relative d-none d-lg-block">

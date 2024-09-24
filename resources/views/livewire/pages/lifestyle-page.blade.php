@@ -2,7 +2,7 @@
     {{-- Success is as dangerous as failure. --}}
     @section('titles')
         <title>{{__('Estilo de vida')}} - Quadrant Luxury Ocean Living</title>
-        <meta name="description" content="">
+        <meta name="description" content="{{__('Descubre el estilo de vida costero en Bucerías con Quadrant Luxury Ocean Living. Vive cerca del mar y disfruta de sus playas, gastronomía, actividades al aire libre y un entorno relajado')}}">
     @endsection 
 
 
@@ -62,7 +62,7 @@
         </div>
 
         <div class="col-12 col-lg-6 px-3 px-lg-5 fs-5 fw-light align-self-center">
-            <h2 class="fs-3 mb-4">{{__('Ventajas de Vivir en Bucerías:')}}</h2>
+            <h2 class="fs-3 mb-4">{{__('Ventajas de Vivir en Bucerías')}}</h2>
             <ol>
                 
                 <li class="mb-3">
@@ -133,7 +133,7 @@
         </div>
 
         <div class="col-12 col-lg-5 position-relative align-self-center order-1 order-lg-2 mb-5 mb-lg-0">
-            <img src="{{asset('/img/actividades-bucerias.webp')}}" alt="Estilo de vida Bucerías Nayarit" class="w-100">
+            <img src="{{asset('/img/actividades-bucerias.webp')}}" alt="{{__('Estilo de vida Bucerías Nayarit')}}" class="w-100">
         </div>
 
     </div>

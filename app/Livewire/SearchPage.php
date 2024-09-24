@@ -24,6 +24,22 @@ class SearchPage extends Component
         $this->resetPage();
     }
 
+    public function saveUnit($unitID){
+
+        $unit = Unit::findOrFail( $unitID );
+        $unit->users()->attach( auth()->user()->id );
+        $unit->save();
+
+    }
+
+    public function removeUnit($unitID){
+
+        $unit = Unit::findOrFail( $unitID );
+        $unit->users()->detach( auth()->user()->id );
+        $unit->save();
+
+    }
+
     public function render()
     {
         $units = Unit::where('price', '>' ,$this->min_price)->where('price','<', $this->max_price)->where('status', '!=', 'Vendida');

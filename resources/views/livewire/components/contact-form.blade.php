@@ -47,7 +47,7 @@
                         </div>
             
                         <div class="col-12 d-flex mb-4">
-                            <label for="phone" class="me-3">{{__('Mensaje')}}:</label>
+                            <label for="phone" class="me-3">{{__('Notas')}}:</label>
                             <textarea wire:model="message" id="message" cols="30" required class="form-control mb-4" rows="3"></textarea>
                         </div>
             

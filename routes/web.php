@@ -2,9 +2,13 @@
 
 use App\Livewire\HomePage;
 use App\Livewire\UnitPage;
+use App\Livewire\SavedUnits;
 use App\Livewire\SearchPage;
 use App\Livewire\ContactPage;
+use App\Livewire\ProfilePage;
 use App\Livewire\LifestylePage;
+use App\Livewire\PrivacyPolicy;
+use App\Livewire\ConstructionPage;
 use Illuminate\Support\Facades\Route;
 
 
@@ -26,6 +30,10 @@ Route::localized(function () {
     Route::get( Lang::uri('/condominio-en-venta').'/{name}', UnitPage::class)->name('pages.unit');
     Route::get( Lang::uri('/estilo-de-vida'), LifestylePage::class)->name('pages.lifestyle');
     Route::get( Lang::uri('/contacto'), ContactPage::class)->name('pages.contact');
+    Route::get( Lang::uri('/aviso-de-privacidad'), PrivacyPolicy::class)->name('pages.privacy');
+    Route::get( Lang::uri('/unidades-guardadas'), SavedUnits::class)->name('pages.saved');
+    Route::get( Lang::uri('/mi-perfil'), ProfilePage::class)->name('pages.profile');
+    Route::get( Lang::uri('/avances-de-obra'), ConstructionPage::class)->name('pages.construction');
 
     Livewire::setUpdateRoute(function ($handle) {
         return Route::post('/livewire/update', $handle);

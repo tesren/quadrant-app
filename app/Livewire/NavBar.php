@@ -4,6 +4,9 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Livewire\Attributes\On;
+use App\Models\ConstructionUpdate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class NavBar extends Component
 {
@@ -15,8 +18,19 @@ class NavBar extends Component
         $this->unit_name = $name;
     }
 
+    public function logout(){
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        $this->redirect('/', navigate: true);
+    }
+
     public function render()
     {
-        return view('livewire.components.nav-bar');
+        $const_updates = ConstructionUpdate::all();
+
+        return view('livewire.components.nav-bar', compact('const_updates'));
     }
 }

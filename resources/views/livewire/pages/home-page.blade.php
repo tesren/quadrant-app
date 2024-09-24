@@ -2,7 +2,7 @@
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
     @section('titles')
         <title>Quadrant Luxury Ocean Living - {{ __('Condominios en venta en Bucerías, Nayarit') }}</title>
-        <meta name="description" content="">
+        <meta name="description" content="{{__('Descubre Quadrant Luxury Ocean Living en Bucerías, Nayarit. Condominios de entrega inmediata en un desarrollo exclusivo de 34,979.73 m², con edificios de lujo, elevadores y 19,043.06 m² dedicados a áreas comunes. Vive a unas cuadras de la playa y disfruta de un estilo de vida excepcional.')}}">
     @endsection 
 
 
@@ -49,7 +49,7 @@
     <div class="row justify-content-evenly mb-6" id="info">
 
         <div class="col-12 col-lg-4 align-self-center position-relative mb-4 mb-lg-0">
-            <img src="{{asset('/img/bucerias-nayarit.webp')}}" alt="Bucerías, Nayarit" class="w-100">
+            <img src="{{asset('/img/bucerias-nayarit.webp')}}" alt="Bucerías, Nayarit" class="w-100" loading="lazy">
             <h2 class="position-absolute top-0 end-0 fs-5 pt-2 pt-lg-3 pe-4"><i class="fa-solid fa-location-dot"></i> Bucerías<span class="d-none d-lg-inline">, Nayarit</span></h2>
         </div>
 
@@ -76,7 +76,7 @@
                 <source media="(max-width: 767px)" srcset="{{asset('/img/quadrant-gallery-mobile.webp')}}">
               
                 <!-- Fallback para navegadores que no soportan <picture> -->
-                <img src="{{asset('img/gallery-desktop.webp')}}" alt="Quadrant luxury ocean living" class="w-100">
+                <img src="{{asset('img/gallery-desktop.webp')}}" alt="Quadrant luxury ocean living" class="w-100" loading="lazy">
             </picture>
 
 
@@ -84,7 +84,7 @@
         </div>
      
         @for ($i=1; $i<13; $i++)
-            <img src="{{asset('img/home-gallery/home-gallery-'.$i.'.webp')}}" alt="{{__('Galería')}} Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery">
+            <img src="{{asset('img/home-gallery/home-gallery-'.$i.'.webp')}}" alt="{{__('Galería')}} Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery" loading="lazy">
         @endfor
 
     </div>
@@ -191,9 +191,9 @@
             </h3>
 
             <ul class="fw-light fs-5 mb-5">
-                <li>Sobre una superficie de terreno con 34,979.73 m2.</li>
-                <li>Edificios de exclusivos departamentos con elevadores.</li>
-                <li>19,043.06 m2 asignados a áreas comunes.</li>
+                <li>{{__('Sobre una superficie de terreno con 34,979.73 m²')}}.</li>
+                <li>{{__('Edificios de exclusivos departamentos con elevadores.')}}</li>
+                <li>{{__('19,043.06 m² asignados a áreas comunes.')}}</li>
             </ul>
 
         </div>
@@ -204,10 +204,10 @@
 
         <div class="col-12 col-lg-4 position-relative mb-5 mb-lg-0">
 
-            <div class="position-absolute fs-5 top-0 end-0 mt-2 me-4 mt-lg-4 me-lg-5"><i class="fa-solid fa-location-dot"></i> Ubicación</div>
+            <div class="position-absolute fs-5 top-0 end-0 mt-2 me-4 mt-lg-4 me-lg-5"><i class="fa-solid fa-location-dot"></i> {{__('Ubicación')}}</div>
 
-            <img src="{{asset('/img/location-map.webp')}}" alt="Mapa de ubicación de Quadrant" class="w-100 mb-2">
-            <address class="text-center fs-5"><img src="{{asset('img/quadrant-logo-icon.svg')}}" width="15px" alt=""> Av. Las Palmas 100, Col. Terralta, Bucerías, Nay.</address>
+            <img src="{{asset('/img/location-map.webp')}}" alt="Mapa de ubicación de Quadrant" class="w-100 mb-2" loading="lazy">
+            <address class="text-center fs-5"><img src="{{asset('img/quadrant-logo-icon.svg')}}" width="15px" alt="" loading="lazy"> Av. Las Palmas 100, Col. Terralta, Bucerías, Nay.</address>
         </div>
 
         <div class="col-12 col-lg-5 align-self-center">
@@ -251,7 +251,7 @@
     {{-- Boton de inventario --}}
     <div class="py-5 mb-6 text-center position-relative">
 
-        <a href="#" class="btn btn-light rounded-pill shadow px-4 fs-5 position-relative z-2"><i class="fa-solid fa-building"></i> {{__('Nuestro Inventario')}}</a>
+        <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill shadow px-4 fs-5 position-relative z-2"><i class="fa-solid fa-building"></i> {{__('Ver Inventario')}}</a>
 
         <hr class="blue-hr position-absolute top-50 start-0 z-1 w-100 my-0" style="transform: translateY(-50%);">
     </div>

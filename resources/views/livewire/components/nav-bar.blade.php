@@ -37,20 +37,40 @@
                             <a class="nav-link fs-5 @if( strpos($route, 'lifestyle') != false) active @endif" href="{{route('pages.lifestyle')}}" wire:navigate>{{__('Estilo de vida')}}</a>
                         </li>
 
+                        @if ( count($const_updates) > 0)
+                            <li class="nav-item me-0 me-lg-4">
+                                <a class="nav-link fs-5 @if( strpos($route, 'construction') != false) active @endif" href="{{route('pages.construction')}}" wire:navigate>{{__('Avances de obra')}}</a>
+                            </li>                            
+                        @endif
+
                         <li class="nav-item me-0 me-lg-4">
                             <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact') }}" wire:navigate>{{__('Contacto')}}</a>
                         </li>
 
-                        <li class="nav-item dropdown me-0 me-lg-4">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-regular fs-4 fa-circle-user"></i>
-                            </a>
+                        @guest
+                            <li class="nav-item me-0 me-lg-4 align-self-center">
+                                <a class="btn btn-outline-blue" href="{{ route('login') }}" wire:navigate>{{__('Inicia Sesión')}}</a>
+                            </li>
 
-                            <ul class="dropdown-menu dropdown-menu-end">
-                              <li><a class="dropdown-item" href="#">Action</a></li>
-                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                            </ul>
-                        </li>
+                            <li class="nav-item me-0 me-lg-4 align-self-center">
+                                <a class="btn btn-blue" href="{{ route('register') }}" wire:navigate>{{__('Regístrate')}}</a>
+                            </li>
+                        @endguest
+
+                        @auth
+                            <li class="nav-item dropdown me-0 me-lg-4">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa-regular text-blue fs-4 fa-circle-user"></i>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" wire:navigate href="{{ route('pages.profile') }}">{{__('Mi Perfil')}}</a></li>
+                                    <li><a class="dropdown-item" href="{{route('pages.saved')}}" wire:navigate>{{__('Unidades Guardadas')}}</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><button class="dropdown-item" wire:click="logout" >{{__('Cerrar sesión')}}</button></li>
+                                </ul>
+                            </li>
+                        @endauth
 
                         <li class="nav-item me-0 me-lg-4">
         

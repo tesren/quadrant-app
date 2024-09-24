@@ -2,7 +2,7 @@
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     @section('titles')
         <title>{{__('Buscar Condominios')}} - Quadrant Luxury Ocean Living</title>
-        <meta name="description" content="">
+        <meta name="description" content="{{__('Explora el inventario de Quadrant Luxury Ocean Living en Bucerías. Visualiza condominios disponibles y filtra por precio, recámaras, torre y más para encontrar tu hogar ideal en Bucerías Nayarit.')}}">
     @endsection 
 
     {{-- Inicio --}}
@@ -136,6 +136,9 @@
                 <table class="table table-sm table-light mb-0">
     
                     <thead>
+                        @auth
+                            <th class="text-center bg-blue fw-light fs-5">{{__('Favorito')}}</th>
+                        @endauth
                         <th class="text-center bg-blue fw-light fs-5">{{__('Unidad')}}</th>
                         <th class="d-none d-lg-table-cell text-center bg-blue fw-light fs-5">{{__('Torre')}}</th>
                         <th class="text-center bg-blue fw-light fs-5">{{__('Piso')}}</th>
@@ -163,6 +166,24 @@
     
                                 <tr wire:key={{$unit->id}}>
     
+                                    @auth
+                                        <td class="text-center">
+                                            @if ( !null == $unit->users()->wherePivot('unit_id', $unit->id)->wherePivot('user_id', auth()->user()->id)->first() )
+
+                                                <button wire:click="removeUnit({{$unit->id}})" class="btn btn-link link-danger fs-5" title="{{__('Quitar de Favoritos')}}">
+                                                    <i class="fa-solid fa-heart"></i>
+                                                </button>
+
+                                            @else
+
+                                                <button wire:click="saveUnit({{$unit->id}})" class="btn btn-link link-danger fs-5"  title="{{__('Agregar a Favoritos')}}">
+                                                    <i class="fa-regular fa-heart"></i>
+                                                </button>
+
+                                            @endif
+                                        </td>
+                                    @endauth
+
                                     <td class="{{$badgeBg}} text-light text-center fw-bold">{{ $unit->name }}</td>
                                     <td class="d-none d-lg-table-cell text-center">{{ $unit->tower->name }}</td>
 

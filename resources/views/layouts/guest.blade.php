@@ -19,9 +19,9 @@
 
         <x-guest-navbar />
         
-        <div class="min-h-screen flex flex-col sm:justify-center lg:justify-start sm:items-center lg:items-start pt-6 sm:pt-0 bg-gray-100" style="background-image:url('{{asset('img/inventory-img.webp')}}'); background-repeat:no-repeat; background-size:cover;">
+        <div class="flex flex-col sm:justify-center sm:items-center pt-6 sm:pt-0 bg-gray-100 px-4 lg:px-0" style="background-image:url('{{asset('/img/login-bg.webp')}}'); background-repeat:no-repeat; background-size:cover; height:91vh;">
 
-            <div class="w-full sm:max-w-md px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg sm:mt-0 sm:ml-0 lg:mt-14 lg:ml-14">
+            <div class="w-full sm:max-w-4xl bg-white shadow-md overflow-hidden sm:rounded-lg sm:mt-0 sm:ml-0">
                 {{ $slot }}
             </div>
 

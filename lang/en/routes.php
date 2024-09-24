@@ -10,4 +10,6 @@ return [
     '/condominios-con-vista-al-mar' => '/oceanview-condos',
     '/condominio-en-preventa' => '/presale-condominium',
     '/buscar-condominios' => '/search-condominiums',
+    '/unidades-guardadas' => '/saved-units',
+    'mi-perfil' => 'my-profile'
 ];

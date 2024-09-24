@@ -17,6 +17,22 @@ class UnitPage extends Component
         $this->dispatch('nombre-unidad', name:$name);
     }
 
+    public function saveUnit($unitID){
+
+        $unit = Unit::findOrFail( $unitID );
+        $unit->users()->attach( auth()->user()->id );
+        $unit->save();
+
+    }
+
+    public function removeUnit($unitID){
+
+        $unit = Unit::findOrFail( $unitID );
+        $unit->users()->detach( auth()->user()->id );
+        $unit->save();
+
+    }
+
     public function render()
     {
         return view('livewire.pages.unit-page')->layout('layouts.public-base');

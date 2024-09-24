@@ -9,7 +9,7 @@
 }
 
 body{
-    font-family: "League Spartan", sans-serif;
+    font-family: "League Spartan", sans-serif !important;
     font-optical-sizing: auto;
     overflow-x: hidden;
     color: var(--blue);
@@ -77,12 +77,27 @@ body{
 
 .btn-blue{
     background-color: var(--blue);
+    line-height: 1;
     color: white;
 }
 
 .btn-blue:hover{
     background-color: #0a2239;
     color: white;
+    transition: 0.3s;
+}
+
+.btn-outline-blue{
+    background-color: transparent;
+    color: var(--blue);
+    line-height: 1;
+    border: 1px solid var(--blue);
+}
+
+.btn-outline-blue:hover{
+    background-color: #0a2239;
+    color: white;
+    border: 1px solid var(--blue);
     transition: 0.3s;
 }
 
@@ -96,16 +111,26 @@ body{
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: white;
+    color: var(--blue);
     background-color: transparent;
     border-top: none;
     border-left: none;
     border-right: none;
+    border-bottom: 1px solid var(--blue);
     border-radius: 0px;
+}
+
+#lead_form .form-control{
+    border-bottom: 1px solid white;
+    color: white;
 }
 
 .home-img{
     height: 91vh;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+    background-color: var(--blue);
 }
 
 .bg-blue-map{

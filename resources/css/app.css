@@ -14,3 +14,27 @@ body{
     overflow-x: hidden;
     color: var(--blue) !important;
 }
+
+.btn-blue{
+    background-color: var(--blue);
+    color: white;
+}
+
+.btn-blue:hover{
+    background-color: #0a2239;
+    color: white;
+    transition: 0.3s;
+}
+
+.btn-outline-blue{
+    background-color: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.btn-outline-blue:hover{
+    background-color: #0a2239;
+    color: white;
+    border: 1px solid var(--blue);
+    transition: 0.3s;
+}

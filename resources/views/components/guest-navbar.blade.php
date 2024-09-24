@@ -1,5 +1,5 @@
 <header class="bg-white py-3">
-    <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+    <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
 
         <div class="flex-1 md:flex md:items-center md:gap-12">
@@ -10,34 +10,37 @@
   
         <div class="md:flex md:items-center md:gap-12">
             <nav aria-label="Global" class="hidden md:block">
-                <ul class="flex items-center gap-6 text-sm">
+                <ul class="flex items-center gap-6 text-lg font-light">
 
                     <li>
-                    <a class="text-sky-900 transition hover:text-sky-700/75" href="#"> {{__('Inventario')}} </a>
+                        <a class="text-sky-900 transition hover:text-sky-700/75" wire:navigate href="{{route('pages.search')}}"> {{__('Inventario')}} </a>
                     </li>
 
                     <li>
-                    <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> {{__('Estilo de vida')}} </a>
+                        <a class="text-gray-500 transition hover:text-gray-500/75" wire:navigate href="{{route('pages.lifestyle')}}"> {{__('Estilo de vida')}} </a>
                     </li>
 
                     <li>
-                    <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> {{__('Contacto')}} </a>
-                    </li>
-
-                    <li>
-                    <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Services </a>
-                    </li>
-
-                    <li>
-                    <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Projects </a>
-                    </li>
-
-                    <li>
-                    <a class="text-gray-500 transition hover:text-gray-500/75" href="#"> Blog </a>
+                        <a class="text-gray-500 transition hover:text-gray-500/75" wire:navigate href="{{route('pages.contact')}}"> {{__('Contacto')}} </a>
                     </li>
 
                 </ul>
             </nav>
+            
+            <div class="flex items-center gap-4">
+                <div class="sm:flex sm:gap-4">
+
+                  <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-outline-blue shadow" href="{{route('login')}}">
+                    {{__('Inicia Sesión')}}
+                  </a>
+      
+                  <div class="hidden sm:flex">
+                    <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-blue" href="{{route('register')}}">
+                      {{__('Regístrate')}}
+                    </a>
+                  </div>
+
+                </div>
   
             <div class="flex items-center gap-4">
                 <div class="block md:hidden">

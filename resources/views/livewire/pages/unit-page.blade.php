@@ -2,7 +2,12 @@
     
     @section('titles')
         <title>{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living</title>
-        <meta name="description" content="">
+        <meta name="description" content="{{__('Increíble condominio que fusiona lujo, confort y vistas asombrosas. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
+                [
+                    'bedrooms' => $unit->unitType->bedrooms,
+                    'bathrooms' => $unit->unitType->bathrooms,
+                    'area' => $unit->const_total
+                ])}}">
     @endsection
 
     @php
@@ -68,7 +73,25 @@
     <div id="info" class="row justify-content-evenly mb-6">
 
         <div class="col-12 col-lg-6 px-4 px-lg-3">
-            <h1>{{__('Unidad')}} {{$unit->name}}</h1>
+            <h1>
+                {{__('Unidad')}} {{$unit->name}}
+                @auth
+                    @if ( !null == $unit->users()->wherePivot('unit_id', $unit->id)->wherePivot('user_id', auth()->user()->id)->first() )
+
+                        <button wire:click="removeUnit({{$unit->id}})" class="btn btn-link link-danger fs-3" title="{{__('Quitar de Favoritos')}}">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+
+                    @else
+
+                        <button wire:click="saveUnit({{$unit->id}})" class="btn btn-link link-danger fs-3"  title="{{__('Agregar a Favoritos')}}">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+
+                    @endif
+                @endauth
+                
+            </h1>
 
             <p class="fw-light fs-5 mb-5">
                 {{__('Increíble condominio que fusiona lujo, confort y vistas asombrosas. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
@@ -105,15 +128,15 @@
 
             <div class="row mb-5 fw-light fs-5">
                 <div class="col-12 col-lg-3 mb-1">
-                    <i class="fa-solid fa-ruler-combined"></i> Interior: {{$unit->interior_const}} m²
+                    <i class="fa-solid fa-ruler-combined"></i> Interior: {{$unit->interior_const}} {{__('m²')}}
                 </div>
 
                 <div class="col-12 col-lg-3 mb-1">
-                    <i class="fa-solid fa-maximize"></i> Exterior: {{$unit->exterior_const}} m²
+                    <i class="fa-solid fa-maximize"></i> Exterior: {{$unit->exterior_const}} {{__('m²')}}
                 </div>
 
                 <div class="col-12 col-lg-3">
-                    <i class="fa-solid fa-house"></i> Total: {{$unit->const_total}} m²
+                    <i class="fa-solid fa-house"></i> Total: {{$unit->const_total}} {{__('m²')}}
                 </div>
             </div>
 
@@ -123,12 +146,12 @@
 
             @if ($unit->status == 'Disponible')
                 <div class="badge {{$status_class}} fs-5 fw-light rounded-pill mb-3">
-                    {{$unit->status}}
+                    {{__($unit->status)}}
                 </div>
                 <div class="fs-1 mb-1 lh-1">${{number_format($unit->price)}} {{$unit->currency}}</div>
             @else
                 <div class="badge {{$status_class}} fs-3 fw-light rounded-pill mb-3">
-                    {{__('Unidad')}} {{$unit->status}}
+                    {{__('Unidad')}} {{__($unit->status)}}
                 </div>
             @endif
 
@@ -142,7 +165,7 @@
 
         <div class="col-12 col-lg-5 col-xxl-4 align-self-center mb-5" style="background-image: url('{{asset('img/blueprint-bg.webp')}}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
             @if ( count($blueprints) > 0 )
-                <img class="w-100" src="{{ $blueprints[1]->getUrl('medium') }}" alt="Planos de la unidad {{$unit->name}} de Quadrant Bucerías">
+                <img class="w-100" src="{{ $blueprints[1]->getUrl('medium') }}" alt="Planos de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
             @endif
         </div>
 
@@ -151,7 +174,7 @@
             
             @if ( count($blueprints) > 0 )
                 <h3>{{__('Distribución')}}</h3>
-                <img class="w-100 mb-5" src="{{ $blueprints[0]->getUrl('medium') }}" alt="Distribución de la unidad {{$unit->name}} de Quadrant Bucerías">
+                <img class="w-100 mb-5" src="{{ $blueprints[0]->getUrl('medium') }}" alt="Distribución de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
             @endif
 
             <div class="position-relative">

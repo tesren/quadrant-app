@@ -9,5 +9,7 @@ return [
     '/condominios-con-vista-al-golf' => '/condominios-con-vista-al-golf',
     '/condominios-con-vista-al-mar' => '/condominios-con-vista-al-mar',
     '/buscar-condominios' => '/buscar-condominios',
-    '/condominio-en-preventa' => '/condominio-en-preventa'
+    '/condominio-en-preventa' => '/condominio-en-preventa',
+    '/unidades-guardadas' => '/unidades-guardadas',
+    'mi-perfil' => 'mi-perfil'
 ];
