@@ -29,7 +29,7 @@ class LoginData extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Espacio Marina Login Info',
+            subject: 'Quadrant Login Info',
         );
     }
 

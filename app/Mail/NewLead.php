@@ -29,7 +29,7 @@ class NewLead extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Nuevo mensaje desde Espacio Marina',
+            subject: 'Nuevo mensaje desde Quadrant',
         );
     }
 

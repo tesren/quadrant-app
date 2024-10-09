@@ -69,6 +69,13 @@
                 <div class="text-white rounded-2 p-3 bg-success fw-semibold fs-5 text-center mt-3 mb-4">
                     <i class="fa-regular fa-circle-check"></i> {{__(session('message'))}}
                 </div>
+
+                @script
+                <script>
+                    const confirmationModal = new bootstrap.Modal('#confirmationModal');
+                    confirmationModal.show();
+                </script>
+                @endscript
             @endif
 
             <div wire:loading class="text-center fs-5 my-3 text-warning"> 
@@ -76,6 +83,27 @@
             </div>            
         </div>
 
+    </div>
+    
+    {{-- Modal de confirmación --}}
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-white bg-blue">
+
+                <img width="150px" src="{{asset('/img/quadrant-logo-icon-white.svg')}}" class="position-absolute start-0 top-0 m-3" alt="" style="opacity: 0.2;">
+
+                <div class="modal-header">
+                    <div class="modal-title fs-5 fw-light" id="exampleModalLabel">{{__('Formulario enviado')}}</div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <div class="fs-1">{{__('¡Gracias!')}}</div>
+                    <div class="fs-5 mb-4 fw-light">{{__('Su mensaje fue enviado exitosamente, nos comunicaremos con usted lo más pronto posible')}}</div>
+                </div>
+                
+            </div>
+        </div>
     </div>
 
 </div>

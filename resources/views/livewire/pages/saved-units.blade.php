@@ -100,7 +100,7 @@
 
                         <div class="col-lg-3 p-0">
                             @if ( isset($gallery[0]) )
-                                <img src="{{ $gallery[0]->getUrl('medium') }}" class="h-100 w-100 object-fit-cover" alt="Planos de la unidad {{$unit->name}} de Espacio Marina">
+                                <img src="{{ $gallery[0]->getUrl('medium') }}" class="h-100 w-100 object-fit-cover" alt="Planos de la unidad {{$unit->name}} de Quadrant">
                             @endif
                         </div>
 

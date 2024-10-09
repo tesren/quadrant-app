@@ -30,7 +30,7 @@
         <div class="row justify-content-center mb-6 position-relative">
 
             @foreach ($const_updates as $update)
-                <div class="card rounded-0 col-11 col-lg-8 col-xxl-7 mb-5 p-0 shadow-5">
+                <div class="card rounded-5 overflow-hidden col-11 col-lg-8 col-xxl-7 mb-5 p-0 shadow">
                     
                     @php
                         $portrait = asset('media/'.$update->portrait_path);

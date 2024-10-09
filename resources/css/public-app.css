@@ -125,6 +125,10 @@ body{
     color: white;
 }
 
+.form-control:focus {
+    background-color: transparent;
+}
+
 .home-img{
     height: 91vh;
 }
