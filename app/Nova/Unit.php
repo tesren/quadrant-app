@@ -157,7 +157,7 @@ class Unit extends Resource
     protected function sizesFields()
     {
         return [
-            BelongsTo::make(__('Tipo de Unidad'), 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable()->showOnPreview()->help('Verifica que las medidas de abajo sean correctas'),
+            BelongsTo::make(__('Tipo de Unidad'), 'unitType', UnitType::class)->withoutTrashed()->rules('required')->filterable()->showOnPreview()->help('Verifica que las medidas de abajo sean correctas')->sortable(),
 
             Number::make('Interior', 'interior_const')->hideFromIndex()->placeholder('Metros cuadrados del interior')->min(0)->max(99999)->rules('required')->step(0.01)
             ->displayUsing(

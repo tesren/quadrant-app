@@ -7,7 +7,7 @@
 
     {{-- Do your work, then step back. --}}
     <div class="position-relative mb-6">
-        <img src="{{asset('img/contact-bg.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 33vh;">
+        <img src="{{asset('/img/home-gallery/common-areas-14.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 45vh;">
 
         <div class="position-absolute bottom-0 start-0 row justify-content-center justify-content-lg-start">
 
@@ -30,7 +30,7 @@
         <div class="row justify-content-center mb-6 position-relative">
 
             @foreach ($const_updates as $update)
-                <div class="card rounded-5 overflow-hidden col-11 col-lg-8 col-xxl-7 mb-5 p-0 shadow">
+                <div class="card rounded-5 overflow-hidden col-11 col-lg-9 col-xxl-7 mb-5 p-0 shadow">
                     
                     @php
                         $portrait = asset('media/'.$update->portrait_path);

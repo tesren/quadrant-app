@@ -40,7 +40,7 @@
 
         </div>
 
-        <img src="{{asset('img/inventory-img.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 33vh;">
+        <img src="{{asset('/img/inventory-protrait.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 66vh;">
 
     </div>
 

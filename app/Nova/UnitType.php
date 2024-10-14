@@ -126,7 +126,7 @@ class UnitType extends Resource
             }),
 
             Images::make(__('Galería'), 'gallery')->hideFromIndex()/*->rules('required')*/->enableExistingMedia()->showStatistics()
-            ->singleImageRules('dimensions:max_width=2000, max:2048')
+            ->singleImageRules('dimensions:max_width=2500, max:2048')
             ->setFileName(function($originalFilename, $extension, $model){
 
                 // Eliminar caracteres especiales y acentos

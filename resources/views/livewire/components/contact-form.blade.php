@@ -11,7 +11,7 @@
             <hr class="blue-hr d-none d-lg-block">
         </div>
 
-        <div class="col-12 col-lg-4 position-relative">
+        <div class="col-12 col-lg-6 col-xxl-4 position-relative">
 
             <div class="d-flex justify-content-end">
 

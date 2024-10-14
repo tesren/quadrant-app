@@ -3,7 +3,7 @@
       <div class="flex h-16 items-center justify-between">
 
         <div class="flex-1 md:flex md:items-center md:gap-12">
-            <a class="block text-teal-600" href="{{route('pages.home')}}" wire:navigate>
+            <a class="block text-teal-600" href="{{route('pages.home')}}">
                 <img width="250px" src="{{asset('/img/full-logo-quadrant.svg')}}" alt="Logo de Quadrant Luxury Ocean Living">
             </a>
         </div>
@@ -13,15 +13,15 @@
                 <ul class="flex items-center gap-6 text-lg font-light">
 
                     <li>
-                        <a class="text-sky-900 transition hover:text-sky-700/75" wire:navigate href="{{route('pages.search')}}"> {{__('Inventario')}} </a>
+                        <a class="text-sky-900 transition hover:text-sky-700/75" href="{{route('pages.search')}}"> {{__('Inventario')}} </a>
                     </li>
 
                     <li>
-                        <a class="text-gray-500 transition hover:text-gray-500/75" wire:navigate href="{{route('pages.lifestyle')}}"> {{__('Estilo de vida')}} </a>
+                        <a class="text-gray-500 transition hover:text-gray-500/75" href="{{route('pages.lifestyle')}}"> {{__('Estilo de vida')}} </a>
                     </li>
 
                     <li>
-                        <a class="text-gray-500 transition hover:text-gray-500/75" wire:navigate href="{{route('pages.contact')}}"> {{__('Contacto')}} </a>
+                        <a class="text-gray-500 transition hover:text-gray-500/75" href="{{route('pages.contact')}}"> {{__('Contacto')}} </a>
                     </li>
 
                 </ul>
@@ -30,12 +30,12 @@
             <div class="flex items-center gap-4">
                 <div class="sm:flex sm:gap-4">
 
-                  <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-outline-blue shadow" href="{{route('login')}}">
+                  <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-outline-blue shadow" wire:navigate href="{{route('login')}}">
                     {{__('Inicia Sesión')}}
                   </a>
       
                   <div class="hidden sm:flex">
-                    <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-blue" href="{{route('register')}}">
+                    <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-blue" wire:navigate href="{{route('register')}}">
                       {{__('Regístrate')}}
                     </a>
                   </div>

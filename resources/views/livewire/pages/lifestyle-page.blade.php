@@ -46,7 +46,7 @@
             <p class="d-none d-lg-block"><strong>{{__('Bucerías como Destino Turístico y de Inversión:')}}</strong> {{__('Bucerías no solo es un excelente lugar para vivir, sino también un destino turístico popular y una oportunidad de inversión prometedora. Su ubicación estratégica en la Riviera Nayarit, cerca de Puerto Vallarta, lo convierte en un punto de acceso fácil para turistas nacionales e internacionales. La creciente infraestructura y los servicios de alta calidad, junto con la belleza natural y la oferta cultural, hacen de Bucerías un lugar atractivo para invertir en bienes raíces. Ya sea que busques una casa de vacaciones, una propiedad de alquiler o una residencia permanente, Bucerías ofrece una excelente relación calidad-precio y un entorno envidiable para disfrutar de la vida.')}}</p>
         </div>
 
-        <div class="col-12 col-lg-5 position-relative">
+        <div class="col-12 col-lg-6 col-xxl-5 position-relative">
             <img src="{{asset('img/letras-bucerias.webp')}}" alt="Letras de Bucerías Nayarit" class="w-100">
             <div class="position-absolute top-0 start-0 fs-5 pt-2 pt-lg-3 ps-4"><i class="fa-solid fa-location-dot"></i> Bucerías<span class="d-none d-lg-inline">, Nayarit</span></div>
 
@@ -57,7 +57,7 @@
     {{-- Ventajas de Vivir en Bucerías --}}
     <div class="row justify-content-evenly mb-6">
 
-        <div class="col-12 col-lg-5 position-relative mb-5 mb-lg-0">
+        <div class="col-12 col-lg-6 col-xxl-5 position-relative mb-5 mb-lg-0">
             <img src="{{asset('/img/bucerias-lifestyle.webp')}}" alt="Estilo de vida Bucerías Nayarit" class="w-100">
         </div>
 
@@ -132,7 +132,7 @@
             </ol>
         </div>
 
-        <div class="col-12 col-lg-5 position-relative align-self-center order-1 order-lg-2 mb-5 mb-lg-0">
+        <div class="col-12 col-lg-6 col-xxl-5 position-relative align-self-center order-1 order-lg-2 mb-5 mb-lg-0">
             <img src="{{asset('/img/actividades-bucerias.webp')}}" alt="{{__('Estilo de vida Bucerías Nayarit')}}" class="w-100">
         </div>
 

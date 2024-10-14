@@ -24,7 +24,7 @@
         </a>
     </div>
 
-    <div class="col-12 col-lg-3 mb-5 mb-lg-0 text-center text-lg-start px-4 px-lg-3">
+    <div class="col-12 col-lg-4 col-xxl-3 mb-5 mb-lg-0 text-center text-lg-start px-4 px-lg-3">
         <div class="fs-3 mb-3">{{__('Domicilio')}}</div>
 
         <address class="fs-5 fw-light mb-3">
@@ -38,7 +38,7 @@
 
     </div>
 
-    <div class="col-12 pt-2 px-3 text-center">
+    <div class="col-12 pt-2 px-3 text-center mt-4">
         <i class="fa-regular fa-copyright"></i> Copyright 2024 {{__('Todos los derechos reservados')}} | <a href="{{ route('pages.privacy') }}" wire:navigate class="link-light fw-light">{{__('Aviso de Privacidad')}}</a>
         | 
        <a href="https://punto401.com" class="link-light fw-light text-decoration-none">
