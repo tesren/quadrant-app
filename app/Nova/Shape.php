@@ -49,7 +49,7 @@ class Shape extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'unit.name'
     ];
 
     /**

@@ -40,16 +40,20 @@
 
         </div>
 
-        <img src="{{asset('/img/inventory-protrait.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 66vh;">
+        <img src="{{asset('/img/inventory-protrait.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 40vh;">
 
     </div>
 
     
     <div class="container mb-6">
 
-        {{-- Formulario de búsqueda --}}
         <div class="row justify-content-center mb-5">
 
+            <div class="col-12 px-0 mb-5">
+                @include('components.nav-inventory-type')
+            </div>
+
+            {{-- Formulario de búsqueda --}}
             <div class="col-12 px-2 px-lg-0">
                 <form wire:submit="search">
     
@@ -58,12 +62,11 @@
                         <div class="form-floating mb-3 mb-lg-0">
         
                             <select class="form-select" id="floor" wire:model="floor" aria-label="{{__('Piso')}}">
-                            <option value="0">{{__('Cualquier piso')}}</option>
-        
-                            @for ($i=1; $i<=9; $i++)
-                                <option value="{{$i}}">{{$i}}</option>
-                            @endfor
-                            <option value="10">PH</option>
+                                <option value="0">{{__('Cualquier piso')}}</option>
+            
+                                @for ($i=1; $i<=5; $i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
         
                             </select>
         

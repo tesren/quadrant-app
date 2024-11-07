@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -58,6 +60,12 @@ class Tower extends Resource
             ID::make()->sortable(),
             Text::make('Nombre', 'name')->sortable()->rules('required', 'max:50'),
             Text::make('Nombre secundario', 'secondary_name')->sortable()->rules('max:50'),
+
+            Slug::make('Slug')->from('name')->rules('required', 'unique:towers,slug,{{resourceId}}', 'max:255')->sortable(),
+
+            Text::make('View Box', 'viewbox')->hideFromIndex()->rules('required', 'max:150')->help('View Box del svg que debe ser igual a las dimensiones de la imagen usada'),
+            Image::make('Fachada', 'tower_path')->help('Foto de la fachada donde se muestran las unidades marcadas')->disk('media'),
+
             HasMany::make('Unidades', 'units', Unit::class),
 
         ];

@@ -2,7 +2,7 @@
     
     @section('titles')
         <title>{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living</title>
-        <meta name="description" content="{{__('Increíble condominio que fusiona lujo, confort y vistas asombrosas. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
+        <meta name="description" content="{{__('Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
                 [
                     'bedrooms' => $unit->unitType->bedrooms,
                     'bathrooms' => $unit->unitType->bathrooms,
@@ -94,7 +94,7 @@
             </h1>
 
             <p class="fw-light fs-5 mb-5">
-                {{__('Increíble condominio que fusiona lujo, confort y vistas asombrosas. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
+                {{__('Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
                 [
                     'bedrooms' => $unit->unitType->bedrooms,
                     'bathrooms' => $unit->unitType->bathrooms,

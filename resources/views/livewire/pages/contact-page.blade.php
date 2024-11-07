@@ -16,7 +16,7 @@
 
                 <div class="position-absolute start-0 top-0 pt-3 ps-3 pt-lg-5 ps-lg-5 w-100">
                     <h1 class="fs-4 mb-2 lh-1 col-9 col-lg-11 fw-light">{{__('Contacto')}}</h1>
-                    <p class="fs-2 col-9 col-lg-10">{{__('Contáctanos para obtener')}} <br> {{__('más información sobre el proyecto')}} </p>
+                    <p class="fs-2 col-9 col-lg-10">{{__('Contáctanos para obtener')}} <br> {{__('más información sobre el proyecto')}}. </p>
                 </div>
             </div>
 

@@ -15,14 +15,24 @@
                 <img class="px-0 w-100" src="{{asset('img/bg-white-home.webp')}}" alt="" style="min-height: 160px;">
 
                 <div class="position-absolute start-0 top-0 pt-3 ps-3 pt-lg-5 ps-lg-5 w-100">
-                    <h1 class="fs-1 mb-2 lh-1 col-11">{{__('Una vida maravillosa entre la brisa del mar, diversión y confort.')}}</h1>
-                    <p class="fs-4 fw-light">{{__('Rodeado de vitalidad y relajación')}}</p>
+                    <h1 class="fs-1 mb-3 lh-1 col-11">{{__('Una vida maravillosa entre la brisa del mar, diversión y confort.')}}</h1>
+                    <p class="fs-5 fw-light">{{__('Rodeado de vitalidad y relajación')}}</p>
                 </div>
             </div>
 
         </div>
 
-        <img src="{{asset('img/home-quadrant.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
+        <picture>
+            <!-- Imagen para pantallas de escritorio -->
+            <source media="(min-width: 768px)" srcset="{{asset('img/home-quadrant.webp')}}">
+          
+            <!-- Imagen para pantallas de teléfono -->
+            <source media="(max-width: 767px)" srcset="{{asset('img/home-gallery/common-areas-2.webp')}}">
+          
+            <!-- Fallback para navegadores que no soportan <picture> -->
+            <img src="{{asset('img/home-quadrant.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
+        </picture>
+
 
         <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block">
             <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
@@ -138,7 +148,7 @@
                 </div>
 
                 <div class="col-6 col-lg-4 mb-4 mb-lg-5">
-                    <img width="50px" src="{{asset('/img/amenities/tennis-ball.svg')}}" alt="">
+                    <img width="50px" src="{{asset('img/amenities/pickleball.svg')}}" alt="">
                     <div class="fs-4 fw-light">{{__('Pickleball')}}</div>
                 </div>
 
@@ -214,8 +224,8 @@
 
         <div class="col-12 col-lg-5 align-self-center">
             <h4 class="text-center text-lg-start mb-4">
-                <div class="fs-3">{{__('Oportunidades que no se repiten')}}</div>
-                <div>{{__('Todo lo que necesitas en un solo lugar')}}</div>
+                <div class="fs-3">{{__('Oportunidades que no se repiten')}}.</div>
+                <div>{{__('Todo lo que necesitas en un solo lugar')}}.</div>
             </h4>
 
             <p class="fs-5 fw-light mb-5 mb-md-4 px-3 px-lg-0">{{__('En Bucerías, todos encuentran cómo divertirse, entre fina arena que acaricia un tranquilo oleaje. Es lugar de deportes: velero, kayak o jet ski. Un sorprendente regalo es el arribo de las ballenas que con su imponente majestuosidad nos visitan por temporadas, también encantándonos con sus secretos. En las calles, sus coloridos inmuebles invitan a explorar el mercado local para descubrir tesoros en joyería, artesanía, textiles o dulces típicos. La amabilidad de su gente, siempre cálida y sonriente, es una agradable experiencia.')}}</p>
