@@ -27,7 +27,7 @@
         <img src="{{asset('/img/lifestyle-img.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 66vh;">
 
         <div class="position-absolute bottom-0 end-0 mb-5 me-5 d-none d-lg-block">
-            <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
+            <a href="{{route('pages.search', request()->query() )}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
                 <i class="fa-solid fa-building"></i> {{__('Inventario')}}
             </a>
         </div>

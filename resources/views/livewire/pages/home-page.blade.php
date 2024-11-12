@@ -35,7 +35,7 @@
 
 
         <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block">
-            <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
+            <a href="{{route('pages.search', request()->query())}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
                 <i class="fa-solid fa-building"></i> {{__('Inventario')}}
             </a>
         </div>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="text-center mb-6 d-block d-lg-none">
-        <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
+        <a href="{{route('pages.search', request()->query() )}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
             <i class="fa-solid fa-building"></i> {{__('Ver Inventario')}}
         </a>
     </div>
@@ -263,7 +263,7 @@
     {{-- Boton de inventario --}}
     <div class="py-5 mb-6 text-center position-relative">
 
-        <a href="{{route('pages.search')}}" wire:navigate class="btn btn-light rounded-pill shadow px-4 fs-5 position-relative z-2"><i class="fa-solid fa-building"></i> {{__('Ver Inventario')}}</a>
+        <a href="{{route('pages.search', request()->query() )}}" wire:navigate class="btn btn-light rounded-pill shadow px-4 fs-5 position-relative z-2"><i class="fa-solid fa-building"></i> {{__('Ver Inventario')}}</a>
 
         <hr class="blue-hr position-absolute top-50 start-0 z-1 w-100 my-0" style="transform: translateY(-50%);">
     </div>

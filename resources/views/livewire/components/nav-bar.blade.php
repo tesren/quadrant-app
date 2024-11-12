@@ -3,7 +3,7 @@
     <nav class="navbar navbar-expand-xxl bg-white">
         <div class="container-fluid">
 
-            <a class="navbar-brand" href="{{route('pages.home')}}" wire:navigate>
+            <a class="navbar-brand" href="{{route('pages.home', ['contact'=>$contact] )}}" wire:navigate>
                 <img width="250px" src="{{asset('/img/full-logo-quadrant.svg')}}" alt="Logo de Quadrant Luxury Ocean Living">
             </a>
 
@@ -29,7 +29,7 @@
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-0 pe-lg-3">
 
                         <li class="nav-item d-block d-xxl-none mb-2 mb-xxl-0">
-                            <a class="nav-link fs-5 @if( strpos($route, 'home') != false) active @endif" href="{{route('pages.home')}}" wire:navigate>{{__('Inicio')}}</a>
+                            <a class="nav-link fs-5 @if( strpos($route, 'home') != false) active @endif" href="{{route('pages.home', ['contact'=>$contact] )}}" wire:navigate>{{__('Inicio')}}</a>
                         </li>
 
 
@@ -41,39 +41,43 @@
                                 <ul class="dropdown-menu">
                                     @foreach ($towers as $tower)
                                         <li>
-                                            <a class="dropdown-item" href="{{route('pages.inventory', ['slug'=> $tower->slug] )}}">{{__('Torre')}} {{$tower->name}}</a>
+                                            <a class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
                             </li>
                         @else
                             <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
-                                <a class="nav-link fs-5 @if( strpos($route, 'inventory') != false) active @endif" href="{{route('pages.inventory', ['slug'=> 'himalia'])}}" wire:navigate>{{__('Inventario')}}</a>
+                                <a class="nav-link fs-5 @if( strpos($route, 'inventory') != false) active @endif" href="{{route('pages.inventory', ['slug'=> 'himalia', 'contact'=>$contact] )}}" wire:navigate>{{__('Inventario')}}</a>
                             </li>
                         @endif
 
 
                         <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
-                            <a class="nav-link fs-5 @if( strpos($route, 'lifestyle') != false) active @endif" href="{{route('pages.lifestyle')}}" wire:navigate>{{__('Estilo de vida')}}</a>
+                            <a class="nav-link fs-5 @if( strpos($route, 'lifestyle') != false) active @endif" href="{{route('pages.lifestyle', ['contact'=>$contact] ) }}" wire:navigate>{{__('Estilo de vida')}}</a>
                         </li>
 
                         @if ( count($const_updates) > 0)
                             <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
-                                <a class="nav-link fs-5 @if( strpos($route, 'construction') != false) active @endif" href="{{route('pages.construction')}}" wire:navigate>{{__('Avances de obra')}}</a>
+                                <a class="nav-link fs-5 @if( strpos($route, 'construction') != false) active @endif" href="{{route('pages.construction', ['contact'=>$contact]) }}" wire:navigate>{{__('Avances de obra')}}</a>
                             </li>                            
                         @endif
 
-                        <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
-                            <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact') }}" wire:navigate>{{__('Contacto')}}</a>
-                        </li>
+
+                        @if ($contact != 'no')
+                            <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
+                                <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact', ['contact'=>$contact] ) }}" wire:navigate>{{__('Contacto')}}</a>
+                            </li>
+                        @endif
+
 
                         @guest
                             <li class="nav-item me-0 me-lg-4 align-self-start align-self-xxl-center mb-3 mb-xxl-0">
-                                <a class="btn btn-outline-blue" href="{{ route('login') }}" wire:navigate>{{__('Inicia Sesión')}}</a>
+                                <a class="btn btn-outline-blue" href="{{ route('login', ['contact'=>$contact]) }}" wire:navigate>{{__('Inicia Sesión')}}</a>
                             </li>
 
                             <li class="nav-item me-0 me-lg-4 align-self-start align-self-xxl-center mb-4 mb-xxl-0">
-                                <a class="btn btn-blue" href="{{ route('register') }}" wire:navigate>{{__('Regístrate')}}</a>
+                                <a class="btn btn-blue" href="{{ route('register', ['contact'=>$contact] ) }}" wire:navigate>{{__('Regístrate')}}</a>
                             </li>
                         @endguest
 
@@ -84,8 +88,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" wire:navigate href="{{ route('pages.profile') }}">{{__('Mi Perfil')}}</a></li>
-                                    <li><a class="dropdown-item" href="{{route('pages.saved')}}" wire:navigate>{{__('Unidades Guardadas')}}</a></li>
+                                    <li><a class="dropdown-item" wire:navigate href="{{ route('pages.profile', ['contact'=>$contact] ) }}">{{__('Mi Perfil')}}</a></li>
+                                    <li><a class="dropdown-item" href="{{route('pages.saved', ['contact'=>$contact] ) }}" wire:navigate>{{__('Unidades Guardadas')}}</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><button class="dropdown-item" wire:click="logout" >{{__('Cerrar sesión')}}</button></li>
                                 </ul>

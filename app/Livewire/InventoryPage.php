@@ -21,7 +21,7 @@ class InventoryPage extends Component
 
     public function mount($slug)
     {
-        $this->reset();
+        //$this->reset();
         $this->tower = Tower::where('slug', $slug)->firstOrFail();
         $this->units = $this->tower->units;
         $this->dispatch('slug-torre', slug:$slug);

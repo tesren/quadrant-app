@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="align-self-center">
-                            <a href="{{route('pages.profile')}}" class="text-blue text-decoration-none" aria-label="Config">
+                            <a href="{{route('pages.profile', request()->query() )}}" class="text-blue text-decoration-none" aria-label="Config">
                                 <i class="fa-solid fa-2x fa-gear"></i>
                             </a>
                         </div>
@@ -59,7 +59,7 @@
 
                 <div class="col-12 col-lg-3 align-self-center">
                     <div class="text-center my-5">
-                        <a href="{{route('pages.search')}}" class="btn btn-outline-blue rounded-pill fs-5" wire:navigate>
+                        <a href="{{route('pages.search', request()->query() )}}" class="btn btn-outline-blue rounded-pill fs-5" wire:navigate>
                             <i class="fa-regular fa-building"></i> {{__('Ver todo el inventario')}}
                         </a>    
                     </div>
@@ -96,7 +96,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('pages.unit', ['name' => $unit->name ]) }}" class="row g-0 text-decoration-none" wire:navigate>
+                    <a href="{{ route('pages.unit', array_merge(['name' => $unit->name ], request()->query() )) }}" class="row g-0 text-decoration-none" wire:navigate>
 
                         <div class="col-lg-3 p-0">
                             @if ( isset($gallery[0]) )
@@ -149,7 +149,7 @@
 
             <h1>{{__('Aún no tienes unidades guardadas')}}</h1>
             <p>{{__('Visita nuestro inventario para ver todas las unidades')}}</p>
-            <a href="{{route('pages.search')}}" class="btn btn-blue mb-6" wire:navigate>
+            <a href="{{route('pages.search', request()->query() )}}" class="btn btn-blue mb-6" wire:navigate>
                 {{__('Ver Inventario')}}
             </a>
 

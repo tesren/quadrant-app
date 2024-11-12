@@ -8,11 +8,11 @@
 
     <div class="col-12 col-lg-6 text-start align-self-center px-0">
         <div class="d-flex">
-            <a href="{{route('pages.inventory', ['slug'=>'himalia'] )}}" wire:navigate class="btn btn-outline-blue rounded-circle align-self-center me-2 me-lg-3 p-3 @if( strpos($current_route, 'inventory') != false) active @endif" title="{{__('Gráfico')}}">
+            <a href="{{route('pages.inventory', array_merge(['slug'=>'himalia'], request()->query()) )}}" wire:navigate class="btn btn-outline-blue rounded-circle align-self-center me-2 me-lg-3 p-3 @if( strpos($current_route, 'inventory') != false) active @endif" title="{{__('Gráfico')}}">
                 <i class="fa-solid fs-5 fa-arrows-to-eye"></i>
             </a>
         
-            <a href="{{route('pages.search')}}" wire:navigate class="btn btn-outline-blue rounded-circle align-self-center me-2 me-lg-3 p-3 @if( strpos($current_route, 'search') != false) active @endif" title="{{__('Lista')}}">
+            <a href="{{route('pages.search', request()->query() )}}" wire:navigate class="btn btn-outline-blue rounded-circle align-self-center me-2 me-lg-3 p-3 @if( strpos($current_route, 'search') != false) active @endif" title="{{__('Lista')}}">
                 <i class="fa-solid fs-5 fa-list-ul"></i>
             </a>
         

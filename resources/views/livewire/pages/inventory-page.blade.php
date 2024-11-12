@@ -106,7 +106,7 @@
                             <option value="1">{{__('Sin mínimo')}}</option>
                             @php
                                 $minPriceStart = 6000000;
-                                $maxPrice = 9000000;
+                                $maxPrice = 11000000;
                             @endphp
                             @for($price = $minPriceStart; $price <= $maxPrice; $price += 1000000)
                                 <option value="{{ $price }}">${{ number_format($price / 1000000) }}m</option>
@@ -120,7 +120,7 @@
                             <option value="9999999999">{{__('Sin máximo')}}</option>
                             @php
                                 $maxPriceStart = 7000000;
-                                $maxPrice = 10000000;
+                                $maxPrice = 13000000;
                             @endphp
                             @for($price = $maxPriceStart; $price <= $maxPrice; $price += 1000000)
                                 <option  value="{{ $price }}">${{ number_format($price / 1000000) }}m</option>
@@ -145,7 +145,7 @@
     
                 @foreach ($units as $unit)
     
-                    <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', ['name' => $unit->name]) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
+                    <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
                         <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
                         </polygon>
                         

@@ -9,6 +9,7 @@ use App\Models\ConstructionUpdate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+use Livewire\Attributes\Url;
 
 class NavBar extends Component
 {
@@ -16,10 +17,9 @@ class NavBar extends Component
     public $tower_slug = 'himalia';
     public $route = '';
 
-    public function mount()
-    {
-        $this->route = Route::currentRouteName();
-    }
+    #[Url]
+    public ?string $contact;
+
 
     #[On('nombre-unidad')] 
     public function updateUnit($name)
@@ -31,6 +31,13 @@ class NavBar extends Component
     public function updateTower($slug)
     {
         $this->tower_slug = $slug;
+    }
+
+
+    public function mount()
+    {
+        $this->route = Route::currentRouteName();
+        $this->contact = request()->query('contact');
     }
 
     public function logout(){
