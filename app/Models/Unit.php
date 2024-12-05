@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
+use App\Observers\UnitObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Support\Facades\App;
+use Laravel\Nova\Actions\Actionable;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use Laravel\Nova\Actions\Actionable;
 
-
+#[ObservedBy([UnitObserver::class])]
 class Unit extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia, Actionable;
