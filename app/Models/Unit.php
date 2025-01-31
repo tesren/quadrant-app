@@ -40,6 +40,16 @@ class Unit extends Model implements HasMedia
     }
 
     /**
+     * Get the section that owns the Unit
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function section()
+    {
+        return $this->belongsTo(Section::class,);
+    }
+
+    /**
      * Get the shape associated with the Unit
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

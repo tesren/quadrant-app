@@ -19,4 +19,14 @@ class Tower extends Model
     {
         return $this->hasMany(Unit::class);
     }
+
+    /**
+     * Get all of the sections for the Tower
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
 }

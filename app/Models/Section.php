@@ -19,4 +19,14 @@ class Section extends Model
     {
         return $this->hasMany(Unit::class);
     }
+
+    /**
+     * Get the tower that owns the Section
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tower()
+    {
+        return $this->belongsTo(Tower::class);
+    }
 }

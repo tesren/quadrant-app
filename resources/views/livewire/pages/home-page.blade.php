@@ -9,30 +9,16 @@
     {{-- Inicio --}}
     <div class="position-relative mb-6">
 
-        <div class="position-absolute top-0 start-0 row justify-content-center justify-content-lg-start">
-
-            <div class="col-12 col-lg-8 col-xxl-6 px-0 position-relative">
-                <img class="px-0 w-100" src="{{asset('img/bg-white-home.webp')}}" alt="" style="min-height: 160px;">
-
-                <div class="position-absolute start-0 top-0 pt-3 ps-3 pt-lg-5 ps-lg-5 w-100">
-                    <h1 class="fs-1 mb-3 lh-1 col-11">{{__('Una vida maravillosa entre la brisa del mar, diversión y confort.')}}</h1>
-                    <p class="fs-5 fw-light">{{__('Rodeado de vitalidad y relajación')}}</p>
-                </div>
+        <div class="row position-absolute justify-content-center top-0 start-0 h-100">
+            
+            <div class="col-11 col-lg-5 col-xxl-4 mt-6 text-center align-self-start" style="background-image: url('{{asset('/img/home-vector.webp')}}'); background-repeat:no-repeat; background-size: 100% 100%;">
+                <h1 class="fs-2 mb-2 pt-3">{{__('Una vida maravillosa entre la brisa del mar, diversión y confort.')}}</h1>
+                <p class="fs-5 fw-light">{{__('Rodeado de vitalidad y relajación')}}</p>
             </div>
 
         </div>
 
-        <picture>
-            <!-- Imagen para pantallas de escritorio -->
-            <source media="(min-width: 768px)" srcset="{{asset('img/home-quadrant.webp')}}">
-          
-            <!-- Imagen para pantallas de teléfono -->
-            <source media="(max-width: 767px)" srcset="{{asset('img/home-gallery/common-areas-2.webp')}}">
-          
-            <!-- Fallback para navegadores que no soportan <picture> -->
-            <img src="{{asset('img/home-quadrant.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
-        </picture>
-
+        <img src="{{asset('img/home-gallery/common-areas-1.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
 
         <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block">
             <a href="{{route('pages.search', request()->query())}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">

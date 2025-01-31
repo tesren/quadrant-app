@@ -214,6 +214,16 @@ body{
     transition: 0.2s;
 }
 
+.nav-pills .nav-link {
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.nav-pills .nav-link.active {
+    color: white;
+    background-color: var(--blue);
+}
+
 @media (max-width: 992px) {
 
     .mt-6{

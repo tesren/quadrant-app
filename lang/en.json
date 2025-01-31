@@ -675,5 +675,8 @@
     "Cambia el modo de visualización del inventario" : "Change inventory display mode",
     "Lista" : "List",
     "Gráfico" : "Graphic mode",
-    "Ver todas las unidades" : "View all units"
+    "Ver todas las unidades" : "View all units",
+    "El contrato de promesa de compraventa tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la solicitud de compra." : "The Purchase-Sale Agreement has a ten-day limit to be signed, after the Purchase Request has been submitted.",
+    "Se requiere un depósito de $200,000 MXN (doscientos mil pesos) para apartar la unidad, los cuales son 100% reembolsables en caso de no proceder con la compra de la unidad." : "A deposit of $200,000 MXN (two hundred thousand pesos) is required to reserve the unit, which is 100% refundable in case of not proceeding with the purchase of the unit.",
+    "Si no se procede con la compra de la unidad dentro del plazo establecido (firma de contrato y pago de enganche), la unidad quedará disponible." : "If the purchase does not proceed within the established term (signature of contract and down payment), the unit will become available."
 }

@@ -70,7 +70,7 @@ class UnitType extends Resource
 
 
             Number::make(__('Recámaras'), 'bedrooms')->rules('required')->min(0)->max(15)->help('Dejar en 0 si es Loft o Studio')->sortable(),
-            Number::make(__('Cuartos Flex'), 'flexrooms')->rules('nullable')->min(0)->max(15)->sortable(),
+            Number::make(__('Cuartos Flex'), 'flexrooms')->rules('nullable')->min(0)->max(15)->hideFromIndex(),
             Number::make(__('Baños'), 'bathrooms')->rules('required')->min(0)->max(15)->step(0.5)->sortable(),
 
             Panel::make(__('Medidas'), $this->sizesFields()),
@@ -87,13 +87,13 @@ class UnitType extends Resource
     protected function sizesFields()
     {
         return [
-            Number::make('Interior', 'interior_const')->hideFromIndex()->placeholder('Metros cuadrados del interior')->min(0)->max(99999)->rules('required')->step(0.01)
+            Number::make('Interior', 'interior_const')->sortable()->placeholder('Metros cuadrados del interior')->min(0)->max(99999)->rules('required')->step(0.01)
             ->displayUsing(
                 function($value){
                     return $value.' m²';
                 }
             ),
-            Number::make(__('Exterior'), 'exterior_const')->hideFromIndex()->placeholder('Metros cuadrados de la terraza')->min(0)->max(99999)->rules('required')->step(0.01)
+            Number::make(__('Exterior'), 'exterior_const')->sortable()->placeholder('Metros cuadrados de la terraza')->min(0)->max(99999)->rules('required')->step(0.01)
             ->displayUsing(
                 function($value){
                     return $value.' m²';

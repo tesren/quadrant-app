@@ -177,22 +177,173 @@
                 <img class="w-100 mb-5" src="{{ $blueprints[0]->getUrl('medium') }}" alt="Distribución de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
             @endif
 
-            <div class="position-relative">
+        </div>
 
+    </div>
+
+    <div class="row justify-content-evenly mb-6">
+
+        {{-- Planes de pago --}}
+        @if( $unit->status != 'Vendida' )
+            <div class="col-12 col-lg-6 order-2 order-lg-1 px-2 px-lg-0">
+
+                
+                <div class="px-0 shadow">
+
+                    <h3 class="fs-4 mb-3 text-center d-block d-lg-none pt-4">{{__('Planes de Pago')}}</h3>
+
+                    <ul class="position-relative nav nav-pills px-3 px-lg-5 pb-4 pt-0 pt-lg-4 justify-content-center justify-content-lg-start z-3" id="pills-tab" role="tablist">
+        
+                        <li class="me-3 d-none d-lg-flex">
+                            <h3 class="fs-4 mb-0 align-self-center">{{__('Planes de Pago')}}</h3>
+                        </li>
+        
+                        @php
+                            $i = 0;
+                        @endphp
+        
+                        @foreach ($unit->paymentPlans as $plan)
+        
+                            <li class="nav-item me-1" role="presentation">
+                                <button class="nav-link rounded-pill @if($i==0) active @endif" id="pills-{{$plan->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-plan-{{$plan->id}}" type="button" role="tab">
+                                    @if (app()->getLocale() == 'en')
+                                        {{$plan->name_en}}
+                                    @else
+                                        {{$plan->name}}
+                                    @endif
+                                </button>
+                            </li>
+        
+                            @php
+                                $i++;
+                            @endphp
+                        @endforeach
+                        
+                    </ul>
+        
+                    <div class="tab-content position-relative" id="pills-tabContent">
+
+                        @php $i = 0; @endphp
+                        @foreach ($unit->paymentPlans as $plan)
+        
+                            @php
+                                if($plan->discount > 0){
+                                    $final_price = $unit->price * ( (100 - $plan->discount)/100 );
+                                }else{
+                                    $final_price = $unit->price;
+                                }
+                            @endphp 
+        
+                            <div class="tab-pane pb-3 fade @if($i==0) show active @endif" id="pills-plan-{{$plan->id}}" role="tabpanel" tabindex="0">
+                                
+                                <div class="py-4 bg-blue text-center">
+                                    <div>{{__('Precio Final')}}</div>
+                                    <div class="fs-2">${{ number_format($final_price) }} {{ $unit->currency }}</div>
+                                </div>
+        
+                                @isset($plan->discount)
+                                    <div class="d-flex justify-content-between my-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">{{__('Precio de lista')}}</div>
+                                        <div class="text-decoration-line-through fs-4">${{ number_format($unit->price) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+        
+                                @isset($plan->discount)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">{{__('Descuento')}} ({{$plan->discount}}%)</div>
+                                        <div class="fs-4">${{ number_format( $unit->price * ($plan->discount/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+
+                                    <hr class="green-hr">
+                                @endisset
+        
+                                @isset($plan->down_payment)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{__('Enganche')}} ({{$plan->down_payment}}%)
+                                            <div class="fs-6 fw-light d-none d-lg-block">{{__('A la firma del contrato de promesa de compra-venta')}}.</div>
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $final_price * ($plan->down_payment/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+        
+                                @isset($plan->second_payment)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{__('Segundo pago')}} ({{$plan->second_payment}}%)
+                                            <div class="fs-6 fw-light d-none d-lg-block">{{__('Sesenta días después del enganche')}}.</div>
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $final_price * ($plan->second_payment/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+                                
+                                @isset($plan->months_percent)
+                                    <div class="d-flex justify-content-between mb-3 px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{$plan->months_amount}} {{__('Mensualidades')}} ({{$plan->months_percent}}%)
+                                            @if ($plan->during_const)
+                                                <div class="fs-6 fw-light d-none d-lg-block">{{$plan->months_amount}} {{__('Pagos mensuales durante la construcción')}}.</div>
+                                            @endif
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $final_price * ($plan->months_percent/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+        
+                                @isset($plan->closing_payment)
+                                    <div class="d-flex justify-content-between px-2 px-lg-4 fw-light">
+                                        <div class="fs-4">
+                                            {{__('Pago Final')}} ({{$plan->closing_payment}}%)
+                                            <div class="fs-6 fw-light d-none d-lg-block">{{__('A la entrega física de la propiedad')}}.</div>
+                                        </div>
+                                        <div class="fs-4">${{ number_format( $final_price * ($plan->closing_payment/100) ) }} {{ $unit->currency }}</div>
+                                    </div>
+                                @endisset
+        
+                            </div>
+        
+                            @php $i++; @endphp
+                        @endforeach
+                    </div>
+                </div>
+                
+                <div class="mt-2">
+                    <ul class="fs-6 fw-light">
+                        <li>
+                            {{__('El contrato de promesa de compraventa tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la solicitud de compra.')}}
+                        </li>
+
+                        <li>
+                            {{__('Se requiere un depósito de $200,000 MXN (doscientos mil pesos) para apartar la unidad, los cuales son 100% reembolsables en caso de no proceder con la compra de la unidad.')}}
+                        </li>
+
+                        <li>
+                            {{__('Si no se procede con la compra de la unidad dentro del plazo establecido (firma de contrato y pago de enganche), la unidad quedará disponible.')}}
+                        </li>
+
+                        <li>{{__('Precios, descuentos y condiciones de pago sujetos a cambios sin previo aviso.')}}</li>
+                    </ul>
+                </div>
+
+            </div>
+        @endif
+
+
+        {{-- Ubicación en edificio --}}
+        <div class="col-12 col-lg-5 order-1 order-lg-2 mb-5 mb-lg-0">
+            <div class="position-relative">
+    
                 <div class="position-absolute top-0 start-0 fs-4 fw-light mt-1 mt-lg-3 ms-0 ms-lg-4 ">
                     <i class="fa-solid fa-location-crosshairs"></i> {{__('Localización')}}
                 </div>
-
+    
                 <img src="{{asset('/img/himalia-tower.webp')}}" alt="Localización de la unidad {{$unit->name}} Quadrant" class="w-100 rounded-5">
-
+    
                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute h-100 start-0 top-0 px-0" viewBox="0 0 1068.67 613.56">
                     <polygon class="poly-location" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
                 </svg>
-
+    
             </div>
-
         </div>
-
     </div>
 
     {{-- formulario de contacto --}}

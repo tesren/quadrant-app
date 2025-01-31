@@ -5,8 +5,10 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Section extends Resource
@@ -19,7 +21,7 @@ class Section extends Resource
     public static $model = \App\Models\Section::class;
 
     public function title(){
-        return __('Torre').' '.$this->tower_name.' - '.$this->view;
+        return $this->tower->name.' Sección '.$this->name;
     }
 
     /**
@@ -58,15 +60,12 @@ class Section extends Resource
             ID::make()->sortable(),
             Text::make('Nombre', 'name')->sortable()->rules('required'),
 
-            Select::make('Vista', 'view')->options([
-                'Golf' => __('Campo de Golf'),
-                'Mar' => __('Mar'),
-            ])->displayUsingLabels(),
+            Text::make('Vista', 'view')->sortable(),
 
-            Select::make('Torre', 'tower_name')->options([
-                'A' => __('Torre A'),
-                'B' => __('Torre B'),
-            ])->displayUsingLabels(),
+            BelongsTo::make(__('Torre'), 'tower', Tower::class)->withoutTrashed()->rules('required')->sortable(),
+
+            Text::make('View Box', 'viewbox')->hideFromIndex()->rules('required', 'max:150')->help('View Box del svg que debe ser igual a las dimensiones de la imagen usada'),
+            Image::make('Fachada', 'img_path')->help('Foto de la fachada donde se muestran las unidades marcadas')->disk('media'),
 
             HasMany::make('Unidades', 'units', Unit::class),
 

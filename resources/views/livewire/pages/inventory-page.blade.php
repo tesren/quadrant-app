@@ -138,33 +138,106 @@
             </form>
         </div>
 
-        <div class="rounded-4 overflow-hidden position-relative">
-            <img src="{{asset('media/'.$tower->tower_path )}}" alt="{{__('Inventario')}} {{__('Torre')}} {{$tower->name}}" class="w-100">
-    
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$tower->viewbox}}">
-    
-                @foreach ($units as $unit)
-    
-                    <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
-                        <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
-                        </polygon>
-                        
-                        <text x="{{$unit->shape->text_x ?? '0'}}" y="{{$unit->shape->text_y ?? '0' }}"
-                            font-size="26" fill="#fff" class="fw-light">
-    
-                            <tspan class="fw-normal">{{$unit->name}}</tspan>
-                            
-                        </text>
-                    </a>   
-                    
+        {{-- Secciones en caso de haber --}}
+        @if ( $tower->sections->count() > 0 )
+        
+            <div class="fs-4 mt-5 mb-2 text-center">{{__('Secciones de la Torre')}} {{$tower->name}}</div>
+
+            <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
+
+                @php
+                    $j = 0;
+                @endphp
+
+                @foreach ($tower->sections as $section)
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link @if($j==0) active me-2 @endif" id="pills-{{$section->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$section->id}}" type="button" role="tab" aria-controls="pills-{{$section->id}}">
+                            {{$section->name}}
+                        </button>
+                    </li>
+
+                    @php
+                        $j++;
+                    @endphp
+
                 @endforeach
 
-                @if($tower->id == 1 and $showingUnits == false)
-                    <polygon class="vendida-himalia" points="208.73 155.1 572.71 137.54 572.71 201.05 741 198.45 741 128.57 837.33 123.78 837.33 128.57 1008.5 120.44 1008.5 331.84 912.93 328.84 912.93 463.54 836.67 467.2 741 470.37 741 327.84 572.71 328.84 572.71 466.7 408.94 466.21 408.94 380.61 487.03 380.61 487.03 210.21 331.56 210.27 332.51 270.51 408.94 268.51 408.94 380.61 266.05 379.42 266.05 273.4 208.73 275.24 208.73 155.1"/>
-                @endif
+            </ul>
 
-            </svg>
-        </div>
+        @endif
+
+        @if ( $tower->sections->count() > 0 )
+
+            <div class="tab-content" id="pills-tabContent">
+                @php
+                    $k = 0;
+                @endphp
+
+                @foreach ($tower->sections as $section)
+                    
+                    <div class="tab-pane fade @if($k==0) show active @endif" id="pills-{{$section->id}}" role="tabpanel" aria-labelledby="pills-{{$section->id}}-tab" tabindex="0">
+                        <div class="rounded-4 overflow-hidden position-relative">
+                            <img src="{{asset('media/'.$section->img_path )}}" alt="{{__('Inventario')}} {{__('Torre')}} {{$tower->name}}" class="w-100">
+                    
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
+                    
+                                @foreach ($section->units as $unit)
+                    
+                                    <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
+                                        <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
+                                        </polygon>
+                                        
+                                        <text x="{{$unit->shape->text_x ?? '0'}}" y="{{$unit->shape->text_y ?? '0' }}"
+                                            font-size="26" fill="#fff" class="fw-light">
+                    
+                                            <tspan class="fw-normal">{{$unit->name}}</tspan>
+                                            
+                                        </text>
+                                    </a>   
+                                    
+                                @endforeach
+            
+                            </svg>
+                        </div>
+                    </div>
+
+                    @php
+                        $k++;
+                    @endphp
+
+                @endforeach
+
+            </div>
+            
+        @else
+            <div class="rounded-4 overflow-hidden position-relative">
+                <img src="{{asset('media/'.$tower->tower_path )}}" alt="{{__('Inventario')}} {{__('Torre')}} {{$tower->name}}" class="w-100">
+        
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$tower->viewbox}}">
+        
+                    @foreach ($units as $unit)
+        
+                        <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
+                            <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
+                            </polygon>
+                            
+                            <text x="{{$unit->shape->text_x ?? '0'}}" y="{{$unit->shape->text_y ?? '0' }}"
+                                font-size="26" fill="#fff" class="fw-light">
+        
+                                <tspan class="fw-normal">{{$unit->name}}</tspan>
+                                
+                            </text>
+                        </a>   
+                        
+                    @endforeach
+
+                    @if($tower->id == 1 and $showingUnits == false)
+                        <polygon class="vendida-himalia" points="208.73 155.1 572.71 137.54 572.71 201.05 741 198.45 741 128.57 837.33 123.78 837.33 128.57 1008.5 120.44 1008.5 331.84 912.93 328.84 912.93 463.54 836.67 467.2 741 470.37 741 327.84 572.71 328.84 572.71 466.7 408.94 466.21 408.94 380.61 487.03 380.61 487.03 210.21 331.56 210.27 332.51 270.51 408.94 268.51 408.94 380.61 266.05 379.42 266.05 273.4 208.73 275.24 208.73 155.1"/>
+                    @endif
+
+                </svg>
+            </div>
+        @endif
 
         @auth
             <div class="text-center text-lg-start">

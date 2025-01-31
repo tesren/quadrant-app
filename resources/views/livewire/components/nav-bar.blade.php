@@ -44,6 +44,10 @@
                                             <a class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
                                         </li>
                                     @endforeach
+
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" wire:navigate href="{{ route('pages.search') }}">{{__('Ver todo')}}</a></li>
+
                                 </ul>
                             </li>
                         @else

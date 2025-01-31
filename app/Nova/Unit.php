@@ -76,13 +76,23 @@ class Unit extends Resource
         return [
             ID::make()->sortable()->hideFromDetail()->hideFromIndex(),
 
-            Text::make(__('Unidad'), 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s]+$/')->sortable()->placeholder('Nombre o número de la unidad')->showOnPreview(),
+            Text::make(__('Unidad'), 'name')->rules('required', 'max:50', 'regex:/^[A-Za-z0-9\s\-]+$/')->sortable()->placeholder('Nombre o número de la unidad')->showOnPreview(),
 
             //BelongsTo::make('Torre', 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable()->showCreateRelationButton(),
 
-            BelongsTo::make(__('Torre'), 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable(),
+            BelongsTo::make(__('Torre'), 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable()->default(2),
 
-            Number::make(__('Piso'), 'floor')->rules('required')->min(0)->max(35)->sortable(),
+            BelongsTo::make(__('Sección'), 'section', Section::class)->withoutTrashed()->filterable()->nullable(),
+
+            Number::make(__('Piso'), 'floor')->rules('required')->min(0)->max(35)->sortable()->dependsOn(['name'],
+            function (Number $field, NovaRequest $request, FormData $formData) {
+
+                if($formData->name != null){
+                    $floor = substr($formData->name, 0, 1);
+                    $field->default($floor);
+                }
+
+            }),
 
             Number::make(__('Precio'), 'price')->rules('required')->min(0)->step(0.001)->sortable()->showOnPreview()
             ->displayUsing(

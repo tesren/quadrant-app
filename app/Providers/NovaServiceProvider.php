@@ -44,6 +44,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                
                 MenuSection::resource(Unit::class)->icon('home'), 
                 MenuSection::resource(Tower::class)->icon('office-building'), 
+                MenuSection::resource(Section::class)->icon('template'), 
                 MenuSection::resource(UnitType::class)->icon('collection'),     
                 MenuSection::resource(PaymentPlan::class)->icon('currency-dollar'),
                 MenuSection::resource(Message::class)->icon('inbox-in'),
