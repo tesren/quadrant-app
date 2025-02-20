@@ -75,14 +75,27 @@
         
                         <div class="form-floating mb-3 mb-lg-0">
                             <select class="form-select" id="bedrooms" wire:model="bedrooms" aria-label="{{__('Recámaras')}}">
-                            <option value="0">{{__('Cualquier cantidad')}}</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                                <option value="0">{{__('Cualquier cantidad')}}</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                             <label for="bedrooms">{{__('Recámaras')}}</label>
                         </div>
-    
+
                         <div class="form-floating mb-3 mb-lg-0">
+                            <select class="form-select" id="tower_id" wire:model="tower_id" aria-label="{{__('Torre')}}">
+                                <option value="0">{{__('Cualquier Torre')}}</option>
+                                
+                                @foreach ($towers as $twr)
+                                    <option value="{{$twr->id}}">{{ __('Torre').' '.$twr->name }}</option>
+                                @endforeach
+
+                            </select>
+                            <label for="tower_id">{{__('Torre')}}</label>
+                        </div>
+    
+                        {{-- <div class="form-floating mb-3 mb-lg-0">
                             <select class="form-select" id="unit_type" wire:model="unit_type" aria-label="{{__('Tipo')}}">
                                 <option value="0">{{__('Cualquier tipo')}}</option>
 
@@ -92,7 +105,7 @@
                                 
                             </select>
                             <label for="unit_type">{{__('Tipo')}}</label>
-                        </div>
+                        </div> --}}
         
                         <div class="form-floating mb-3 mb-lg-0">
                             <select class="form-select" id="min_price" wire:model="min_price" aria-label="{{__('Precio min.')}}">

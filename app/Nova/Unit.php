@@ -82,7 +82,7 @@ class Unit extends Resource
 
             BelongsTo::make(__('Torre'), 'tower', Tower::class)->withoutTrashed()->rules('required')->filterable()->default(2),
 
-            BelongsTo::make(__('Sección'), 'section', Section::class)->withoutTrashed()->filterable()->nullable(),
+            BelongsTo::make(__('Sección'), 'section', Section::class)->withoutTrashed()->filterable()->nullable()->hideFromIndex(),
 
             Number::make(__('Piso'), 'floor')->rules('required')->min(0)->max(35)->sortable()->dependsOn(['name'],
             function (Number $field, NovaRequest $request, FormData $formData) {
@@ -149,6 +149,22 @@ class Unit extends Resource
             }),
 
             Image::make(__('Vista de la unidad'), 'view_path')->disk('media')->help('Suba la imagen de la vista de la unidad'),
+
+            Images::make(__('Planos'), 'blueprint')->showStatistics()->singleImageRules('dimensions:max_width=2000, max:2048')
+            ->setFileName(function($originalFilename, $extension, $model){
+
+                // Eliminar caracteres especiales y acentos
+                $limpio = preg_replace('/[^A-Za-z0-9\-]/', '', strtr(utf8_decode($originalFilename), utf8_decode('áéíóúüñÁÉÍÓÚÜÑ'), 'aeiouunAEIOUUN'));
+
+                // Reemplazar espacios por guiones
+                $limpio = str_replace(' ', '-', $limpio);
+
+                // Convertir a minúsculas
+                $limpio = strtolower($limpio);
+                
+                return $limpio . '.' . $extension;
+
+            }),
 
             Panel::make(__('Medidas'), $this->sizesFields()),
 

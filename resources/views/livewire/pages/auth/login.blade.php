@@ -1,25 +1,25 @@
 <?php
 
-use App\Livewire\Forms\LoginForm;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Session;
+    use App\Livewire\Forms\LoginForm;
+    use App\Providers\RouteServiceProvider;
+    use Illuminate\Support\Facades\Session;
 
-use function Livewire\Volt\form;
-use function Livewire\Volt\layout;
+    use function Livewire\Volt\form;
+    use function Livewire\Volt\layout;
 
-layout('layouts.guest');
+    layout('layouts.guest');
 
-form(LoginForm::class);
+    form(LoginForm::class);
 
-$login = function () {
-    $this->validate();
+    $login = function () {
+        $this->validate();
 
-    $this->form->authenticate();
+        $this->form->authenticate();
 
-    Session::regenerate();
+        Session::regenerate();
 
-    $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: true);
-};
+        $this->redirectIntended(default: RouteServiceProvider::HOME, navigate: true);
+    };
 
 ?>
 
@@ -30,8 +30,14 @@ $login = function () {
         <img class="w-full h-full inline-block object-cover" src="{{asset('/img/login-img.webp')}}" alt="{{__('Inicia sesión en Quadrant Luxury Ocean Living')}}">
     
         <div class="w-full inline-block px-6 py-4">
-            <h1 class="mb-0 text-3xl font-bold">{{__('Inicia sesión')}}</h1>
-            <p class="mb-4">{{__('Entra a tu cuenta')}}</p>
+
+            <h1 class="mb-0 text-3xl font-bold">
+                {{__('Inicia sesión')}} 
+            </h1>
+
+            <p class="mb-4">
+                {{__('Bienvenido a la preventa privada de Quadrant Torre 3000')}}
+            </p>
         
             <!-- Session Status -->
             <x-auth-session-status class="mb-4" :status="session('status')" />

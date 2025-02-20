@@ -35,6 +35,17 @@ class UnitPage extends Component
 
     public function render()
     {
-        return view('livewire.pages.unit-page')->layout('layouts.public-base');
+
+        if ( !auth()->check() and $this->unit->tower->private_presale == 1 ) {
+            
+            return abort(404);
+
+        } else {
+            
+            return view('livewire.pages.unit-page')->layout('layouts.public-base');
+
+        }
+        
+
     }
 }

@@ -13,7 +13,12 @@
     @php
         $images = $unit->unitType->getMedia('gallery');
 
-        $blueprints = $unit->unitType->getMedia('blueprints');
+        $blueprints = $unit->getMedia('blueprint');
+
+        if( count($blueprints) < 1 ){
+            $blueprints = $unit->unitType->getMedia('blueprints');
+        }
+
 
         $status_class = $this->unit->status;
 
@@ -163,21 +168,23 @@
     {{-- Planos --}}
     <div class="row justify-content-evenly mb-6">
 
-        <div class="col-12 col-lg-5 col-xxl-4 align-self-center mb-5" style="background-image: url('{{asset('img/blueprint-bg.webp')}}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
-            @if ( count($blueprints) > 0 )
-                <img class="w-100" src="{{ $blueprints[1]->getUrl('medium') }}" alt="Planos de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
-            @endif
-        </div>
 
         <div class="col-12 col-lg-5">
             {{-- Distribución --}}
             
             @if ( count($blueprints) > 0 )
                 <h3>{{__('Distribución')}}</h3>
-                <img class="w-100 mb-5" src="{{ $blueprints[0]->getUrl('medium') }}" alt="Distribución de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
+                <img class="w-100 mb-5" src="{{ $blueprints[0]->getUrl('large') }}" alt="Distribución de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
             @endif
 
         </div>
+
+        @if ( count($blueprints) > 1 )
+            <div class="col-12 col-lg-5 col-xxl-4 align-self-center mb-5" style="background-image: url('{{asset('img/blueprint-bg.webp')}}'); background-repeat: no-repeat; background-position: center; background-size: contain;">
+                <img class="w-100" src="{{ $blueprints[1]->getUrl('medium') }}" alt="Planos de la unidad {{$unit->name}} de Quadrant Bucerías" data-fancybox="blueprints" loading="lazy">
+            </div>
+        @endif
+
 
     </div>
 
@@ -330,24 +337,38 @@
 
         {{-- Ubicación en edificio --}}
         <div class="col-12 col-lg-5 order-1 order-lg-2 mb-5 mb-lg-0">
+
+            <h4>
+                <i class="fa-solid fa-location-crosshairs"></i> {{__('Localización')}}
+            </h4>
+
             <div class="position-relative">
-    
-                <div class="position-absolute top-0 start-0 fs-4 fw-light mt-1 mt-lg-3 ms-0 ms-lg-4 ">
-                    <i class="fa-solid fa-location-crosshairs"></i> {{__('Localización')}}
-                </div>
-    
-                <img src="{{asset('/img/himalia-tower.webp')}}" alt="Localización de la unidad {{$unit->name}} Quadrant" class="w-100 rounded-5">
-    
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute h-100 start-0 top-0 px-0" viewBox="0 0 1068.67 613.56">
-                    <polygon class="poly-location" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
-                </svg>
+
+                @if ($unit->tower->sections->count() > 0)
+
+                    <img src="{{ asset('media/'.$unit->section->img_path) }}" alt="Localización de la unidad {{$unit->name}} Quadrant" class="w-100 rounded-5">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute h-100 start-0 top-0 px-0" viewBox="{{ $unit->section->viewbox }}">
+                        <polygon class="poly-location" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                    </svg>
+
+                @else
+                    <img src="{{ asset('media/'.$unit->tower->tower_path) }}" alt="Localización de la unidad {{$unit->name}} Quadrant" class="w-100 rounded-5">
+                    
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute h-100 w-100 start-0 top-0 px-0" viewBox="0 0 1068 613">
+                        <polygon class="poly-location" points="{{$unit->shape->points ?? '0,0'}}"></polygon>
+                    </svg>
+                @endif
+                
     
             </div>
         </div>
     </div>
 
     {{-- formulario de contacto --}}
-    <livewire:contact-form />
+    @if ($unit->tower->private_presale == 0)
+        <livewire:contact-form />
+    @endif
 
     @script
         <script>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -60,6 +61,8 @@ class Tower extends Resource
             ID::make()->sortable(),
             Text::make('Nombre', 'name')->sortable()->rules('required', 'max:50'),
             Text::make('Nombre secundario', 'secondary_name')->sortable()->rules('max:50'),
+
+            Boolean::make('Preventa Privada', 'private_presale')->sortable()->rules('required'),
 
             Slug::make('Slug')->from('name')->rules('required', 'unique:towers,slug,{{resourceId}}', 'max:255')->sortable(),
 

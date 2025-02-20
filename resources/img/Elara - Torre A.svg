@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1501 1001">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #163756;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        font-size: 38.83px;
+      }
+
+      .cls-3, .cls-4 {
+        fill: #fff;
+        font-family: FuturaBT-Medium, 'Futura Md BT';
+        font-weight: 500;
+      }
+
+      .cls-4 {
+        font-size: 55.18px;
+      }
+    </style>
+  </defs>
+  <g id="Vectores">
+    <g>
+      <g>
+        <polygon class="cls-2" points="481.81 723.8 483.29 723.54 481.83 723.5 481.81 723.8"/>
+        <polygon class="cls-2" points="238.76 766.38 238.76 766.38 336.25 749.3 336.27 749.18 238.76 766.38"/>
+        <polygon class="cls-2" points="238.76 766.38 229.28 860.61 238.76 766.38 238.76 766.38"/>
+        <rect class="cls-2" x="243.25" y="676.97" height="89.64"/>
+        <rect class="cls-2" x="252.98" y="572.9" height="104.56"/>
+        <rect class="cls-2" x="252.98" y="572.9" height="104.56"/>
+        <rect class="cls-2" x="261.87" y="500.32" height="73.03"/>
+
+
+        
+        <polygon class="cls-2" points=""/>
+        <polygon class="cls-2" points=""/>
+      </g>
+      <text class="cls-3" transform="translate(288.77 409.05)"><tspan x="0" y="0">501</tspan></text>
+      <text class="cls-3" transform="translate(278.03 510.94)"><tspan x="0" y="0">401</tspan></text>
+      <text class="cls-3" transform="translate(268.51 610.23)"><tspan x="0" y="0">301</tspan></text>
+      <text class="cls-3" transform="translate(258.22 721.78)"><tspan x="0" y="0">201</tspan></text>
+      <text class="cls-3" transform="translate(245.25 829.85)"><tspan x="0" y="0">101</tspan></text>
+      <text class="cls-4" transform="translate(654.96 241.08)"><tspan x="0" y="0">502</tspan></text>
+      <text class="cls-4" transform="translate(654.96 399.08)"><tspan x="0" y="0">402</tspan></text>
+      <text class="cls-4" transform="translate(654.96 536.83)"><tspan x="0" y="0">302</tspan></text>
+      <text class="cls-4" transform="translate(654.96 684.02)"><tspan x="0" y="0">202</tspan></text>
+      <text class="cls-4" transform="translate(654.96 847.96)"><tspan x="0" y="0">102</tspan></text>
+      <text class="cls-4" transform="translate(877.39 320.1)"><tspan x="0" y="0">503</tspan></text>
+      <text class="cls-4" transform="translate(885.25 451.1)"><tspan x="0" y="0">403</tspan></text>
+      <text class="cls-4" transform="translate(889.71 573.16)"><tspan x="0" y="0">303</tspan></text>
+      <text class="cls-4" transform="translate(898.2 694.29)"><tspan x="0" y="0">203</tspan></text>
+      <text class="cls-4" transform="translate(909.71 830.59)"><tspan x="0" y="0">103</tspan></text>
+      <text class="cls-4" transform="translate(1016.61 366.53)"><tspan x="0" y="0">504</tspan></text>
+      <text class="cls-4" transform="translate(1026.34 490.54)"><tspan x="0" y="0">404</tspan></text>
+      <text class="cls-4" transform="translate(1032.55 602.72)"><tspan x="0" y="0">304</tspan></text>
+      <text class="cls-4" transform="translate(1047.78 708.57)"><tspan x="0" y="0">204</tspan></text>
+      <text class="cls-4" transform="translate(1052.8 822.92)"><tspan x="0" y="0">104</tspan></text>
+      <text class="cls-4" transform="translate(1153.81 416.39)"><tspan x="0" y="0">505</tspan></text>
+      <text class="cls-4" transform="translate(1166.59 524.44)"><tspan x="0" y="0">405</tspan></text>
+      <text class="cls-4" transform="translate(1180.07 621.5)"><tspan x="0" y="0">305</tspan></text>
+      <text class="cls-4" transform="translate(1200.93 715.68)"><tspan x="0" y="0">205</tspan></text>
+      <text class="cls-4" transform="translate(1205.95 817.45)"><tspan x="0" y="0">105</tspan></text>
+      <rect class="cls-1" x=".5" y=".5" width="1500" height="1000"/>
+    </g>
+  </g>
+</svg>

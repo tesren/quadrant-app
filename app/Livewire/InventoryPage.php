@@ -18,12 +18,20 @@ class InventoryPage extends Component
     public $unit_type = 0;
     public $min_price = 1;
     public $max_price = 9999999999;
+    public $activeSection;
+
+    
+    public function setActiveSection($sectionId)
+    {
+        $this->activeSection = $sectionId;
+    }
 
     public function mount($slug)
     {
         //$this->reset();
         $this->tower = Tower::where('slug', $slug)->firstOrFail();
         $this->units = $this->tower->units;
+        $this->activeSection = $this->tower->sections->first()->id ?? null;
         $this->dispatch('slug-torre', slug:$slug);
     }
 
@@ -54,10 +62,9 @@ class InventoryPage extends Component
             $units = $units->where('floor', $this->floor);
         }
 
-
-        if($this->unit_type != 0){
+        /* if($this->unit_type != 0){
             $units = $units->where('unit_type_id', $this->unit_type );
-        }
+        } */
 
         if( $this->bedrooms != 0 ){
 

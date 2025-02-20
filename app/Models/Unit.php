@@ -102,6 +102,8 @@ class Unit extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('unitgallery');
+
+        $this->addMediaCollection('blueprint');
     }
 
 

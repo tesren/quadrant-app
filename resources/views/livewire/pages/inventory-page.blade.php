@@ -18,8 +18,17 @@
                         <span class="fs-5">{{__('Torre')}}</span>
                         {{$tower->name}} <i class="fa-solid fa-building"></i>
                     </h1>
-                    <div class="fs-3 mb-2 lh-1 col-11 d-none d-lg-block">{{__('Todas las comodidades en un solo lugar')}}</div>
-                    <p class="fs-5 fw-light col-9 col-lg-11">{{__('Selecciona las características de la unidad que deseas y comprueba disponibilidad')}}</p>
+
+
+                    @guest
+                        <div class="fs-3 mb-2 lh-1 col-11 d-none d-lg-block">{{__('Todas las comodidades en un solo lugar')}}</div>
+                        <p class="fs-5 fw-light col-9 col-lg-11">{{__('Selecciona las características de la unidad que deseas y comprueba disponibilidad')}}</p>
+                    @endguest
+
+                    @auth
+                        <div class="fs-3 mb-2 lh-1 col-11 d-none d-lg-block">{{__('Bienvenido a la preventa privada')}}</div>
+                        <p class="fs-5 fw-light col-9 col-lg-11">{{__('Selecciona una de las unidades para ver más información sobre ella')}}</p>
+                    @endauth
 
                     <div class="d-flex mb-5 fs-3 fw-light">
                         <div class="me-3 me-lg-4">
@@ -75,13 +84,14 @@
                     <div class="form-floating mb-3 mb-lg-0">
                         <select class="form-select" id="bedrooms" wire:model="bedrooms" aria-label="{{__('Recámaras')}}">
                         <option value="0">{{__('Cualquier cantidad')}}</option>
+                        <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         </select>
                         <label for="bedrooms">{{__('Recámaras')}}</label>
                     </div>
 
-                    <div class="form-floating mb-3 mb-lg-0">
+                    {{-- <div class="form-floating mb-3 mb-lg-0">
                         <select class="form-select" id="unit_type" wire:model="unit_type" aria-label="{{__('Tipo')}}">
                             <option value="0">{{__('Cualquier tipo')}}</option>
 
@@ -99,7 +109,7 @@
                             
                         </select>
                         <label for="unit_type">{{__('Tipo')}}</label>
-                    </div>
+                    </div> --}}
     
                     <div class="form-floating mb-3 mb-lg-0">
                         <select class="form-select" id="min_price" wire:model="min_price" aria-label="{{__('Precio min.')}}">
@@ -144,24 +154,22 @@
             <div class="fs-4 mt-5 mb-2 text-center">{{__('Secciones de la Torre')}} {{$tower->name}}</div>
 
             <ul class="nav nav-pills mb-5 justify-content-center" id="pills-tab" role="tablist">
-
-                @php
-                    $j = 0;
-                @endphp
-
                 @foreach ($tower->sections as $section)
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link @if($j==0) active me-2 @endif" id="pills-{{$section->id}}-tab" data-bs-toggle="pill" data-bs-target="#pills-{{$section->id}}" type="button" role="tab" aria-controls="pills-{{$section->id}}">
+                        <button 
+                            class="nav-link @if($activeSection == $section->id) active @endif me-2" 
+                            id="pills-{{$section->id}}-tab" 
+                            data-bs-toggle="pill" 
+                            data-bs-target="#pills-{{$section->id}}" 
+                            type="button" 
+                            role="tab" 
+                            aria-controls="pills-{{$section->id}}"
+                            wire:click="setActiveSection({{$section->id}})"
+                        >
                             {{$section->name}}
                         </button>
                     </li>
-
-                    @php
-                        $j++;
-                    @endphp
-
                 @endforeach
-
             </ul>
 
         @endif
@@ -169,26 +177,31 @@
         @if ( $tower->sections->count() > 0 )
 
             <div class="tab-content" id="pills-tabContent">
-                @php
-                    $k = 0;
-                @endphp
+                
 
                 @foreach ($tower->sections as $section)
                     
-                    <div class="tab-pane fade @if($k==0) show active @endif" id="pills-{{$section->id}}" role="tabpanel" aria-labelledby="pills-{{$section->id}}-tab" tabindex="0">
+                    <div class="tab-pane fade @if($activeSection == $section->id) show active @endif" id="pills-{{$section->id}}" role="tabpanel" aria-labelledby="pills-{{$section->id}}-tab" tabindex="0">
                         <div class="rounded-4 overflow-hidden position-relative">
                             <img src="{{asset('media/'.$section->img_path )}}" alt="{{__('Inventario')}} {{__('Torre')}} {{$tower->name}}" class="w-100">
                     
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" class="position-absolute start-0 top-0 px-0" viewBox="{{$section->viewbox}}">
+                                
+                                @php
+                                    $section_units = $section->units;
+                                    $searched_units = $units;
+
+                                    $intersected_units = $section_units->intersect($searched_units);
+                                @endphp
                     
-                                @foreach ($section->units as $unit)
+                                @foreach ($intersected_units as $unit)
                     
                                     <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
                                         <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
                                         </polygon>
                                         
                                         <text x="{{$unit->shape->text_x ?? '0'}}" y="{{$unit->shape->text_y ?? '0' }}"
-                                            font-size="26" fill="#fff" class="fw-light">
+                                            font-size="36" fill="#fff" class="fw-light">
                     
                                             <tspan class="fw-normal">{{$unit->name}}</tspan>
                                             
@@ -200,10 +213,6 @@
                             </svg>
                         </div>
                     </div>
-
-                    @php
-                        $k++;
-                    @endphp
 
                 @endforeach
 
@@ -251,7 +260,9 @@
     </div>
 
     {{-- Formulario --}}
-    <livewire:contact-form>
+    @if ($tower->private_presale == 0)
+        <livewire:contact-form>
+    @endif
 
     @script
         <script>

@@ -41,7 +41,13 @@
                                 <ul class="dropdown-menu">
                                     @foreach ($towers as $tower)
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
+                                            @if ($tower->private_presale == 1)
+                                                @auth
+                                                    <a class="dropdown-item fw-bold" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}} ({{__('Preventa privada')}})</a>
+                                                @endauth
+                                            @else
+                                                <a class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
+                                            @endif
                                         </li>
                                     @endforeach
 
@@ -68,21 +74,23 @@
                         @endif
 
 
-                        @if ($contact != 'no')
-                            <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
-                                <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact', ['contact'=>$contact] ) }}" wire:navigate>{{__('Contacto')}}</a>
-                            </li>
-                        @endif
+                       @guest
+                            @if ($contact != 'no')
+                                <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
+                                    <a class="nav-link fs-5 @if( strpos($route, 'contact') != false) active @endif" href="{{ route('pages.contact', ['contact'=>$contact] ) }}" wire:navigate>{{__('Contacto')}}</a>
+                                </li>
+                            @endif
+                       @endguest
 
 
                         @guest
                             <li class="nav-item me-0 me-lg-4 align-self-start align-self-xxl-center mb-3 mb-xxl-0">
-                                <a class="btn btn-outline-blue" href="{{ route('login', ['contact'=>$contact]) }}" wire:navigate>{{__('Inicia Sesión')}}</a>
+                                <a class="btn btn-outline-blue" href="{{ route('login', ['contact'=>$contact]) }}" wire:navigate><i class="fa-solid fa-right-to-bracket"></i> {{__('Inicia Sesión')}}</a>
                             </li>
 
-                            <li class="nav-item me-0 me-lg-4 align-self-start align-self-xxl-center mb-4 mb-xxl-0">
+                            {{-- <li class="nav-item me-0 me-lg-4 align-self-start align-self-xxl-center mb-4 mb-xxl-0">
                                 <a class="btn btn-blue" href="{{ route('register', ['contact'=>$contact] ) }}" wire:navigate>{{__('Regístrate')}}</a>
-                            </li>
+                            </li> --}}
                         @endguest
 
                         @auth
@@ -92,6 +100,10 @@
                                 </a>
 
                                 <ul class="dropdown-menu dropdown-menu-end">
+                                    @if (auth()->user()->role != 'client')
+                                        <li><a class="dropdown-item" href="{{ url('nova') }}">{{__('Panel de control')}}</a></li>
+                                        
+                                    @endif
                                     <li><a class="dropdown-item" wire:navigate href="{{ route('pages.profile', ['contact'=>$contact] ) }}">{{__('Mi Perfil')}}</a></li>
                                     <li><a class="dropdown-item" href="{{route('pages.saved', ['contact'=>$contact] ) }}" wire:navigate>{{__('Unidades Guardadas')}}</a></li>
                                     <li><hr class="dropdown-divider"></li>

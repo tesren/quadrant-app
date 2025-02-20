@@ -1,4 +1,9 @@
 <header class="bg-white py-3">
+
+    @php
+        $route = Route::currentRouteName();
+    @endphp
+
     <div class="mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
 
@@ -24,6 +29,20 @@
                         <a class="text-gray-500 transition hover:text-gray-500/75" href="{{route('pages.contact', request()->query() )}}"> {{__('Contacto')}} </a>
                     </li>
 
+                    <li>
+                        @if (app()->getLocale() == 'es')
+
+                            <a href="{{$url = route($route, request()->query(), true, 'en')}}" wire:navigate class="me-0" title="{{__('Cambiar idioma')}}" >
+                                <img width="20px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                            </a>
+
+                        @else
+                            <a href="{{$url = route($route, request()->query(), true, 'es')}}" wire:navigate class="me-0" title="{{__('Cambiar idioma')}}" >
+                                <img width="20px" src="{{asset('/img/lang-icon.svg')}}" alt="{{__('Cambiar idioma')}}">
+                            </a>
+                        @endif
+                    </li>
+
                 </ul>
             </nav>
             
@@ -31,13 +50,13 @@
                 <div class="sm:flex sm:gap-4">
 
                   <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-outline-blue shadow" wire:navigate href="{{route('login', request()->query() )}}">
-                    {{__('Inicia Sesión')}}
+                    {{__('Inicia sesión')}}
                   </a>
       
                   <div class="hidden sm:flex">
-                    <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-blue" wire:navigate href="{{route('register', request()->query() )}}">
+                    {{-- <a class="rounded-md px-5 py-2.5 text-sm font-medium btn-blue" wire:navigate href="{{route('register', request()->query() )}}">
                       {{__('Regístrate')}}
-                    </a>
+                    </a> --}}
                   </div>
 
                 </div>

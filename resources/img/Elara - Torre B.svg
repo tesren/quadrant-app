@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1501 1001">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        fill: #163756;
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        fill: #fff;
+        font-family: FuturaBT-Medium, 'Futura Md BT';
+        font-size: 55.18px;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <g id="Vectores">
+    <g>
+      <polygon class="cls-2" points="582.5 277.95 387.25 344.02 385.35 489.5 580.29 451.73 669.32 456.17 670.49 303.72 582.5 277.95"/>
+      
+      <text class="cls-3" transform="translate(124.96 387.97)"><tspan x="0" y="0">501</tspan></text>
+      <text class="cls-3" transform="translate(117.71 496.99)"><tspan x="0" y="0">401</tspan></text>
+      <text class="cls-3" transform="translate(111.31 608.17)"><tspan x="0" y="0">301</tspan></text>
+      <text class="cls-3" transform="translate(102.38 709.62)"><tspan x="0" y="0">201</tspan></text>
+      <text class="cls-3" transform="translate(95.97 818.49)"><tspan x="0" y="0">101</tspan></text>
+      <text class="cls-3" transform="translate(259.09 333.44)"><tspan x="0" y="0">502</tspan></text>
+      <text class="cls-3" transform="translate(257.1 456.54)"><tspan x="0" y="0">402</tspan></text>
+      <text class="cls-3" transform="translate(256.56 586.65)"><tspan x="0" y="0">302</tspan></text>
+      <text class="cls-3" transform="translate(252.73 709.62)"><tspan x="0" y="0">202</tspan></text>
+      <text class="cls-3" transform="translate(247.33 839.87)"><tspan x="0" y="0">102</tspan></text>
+      <text class="cls-3" transform="translate(448.44 259.97)"><tspan x="0" y="0">503</tspan></text>
+      <text class="cls-3" transform="translate(448.44 409.05)"><tspan x="0" y="0">403</tspan></text>
+      <text class="cls-3" transform="translate(448.44 562.26)"><tspan x="0" y="0">303</tspan></text>
+      <text class="cls-3" transform="translate(448.44 703.67)"><tspan x="0" y="0">203</tspan></text>
+      <text class="cls-3" transform="translate(448.44 858.83)"><tspan x="0" y="0">103</tspan></text>
+      <text class="cls-3" transform="translate(824.55 231.13)"><tspan x="0" y="0">504</tspan></text>
+      <text class="cls-3" transform="translate(824.55 390.29)"><tspan x="0" y="0">404</tspan></text>
+      <text class="cls-3" transform="translate(824.55 553.48)"><tspan x="0" y="0">304</tspan></text>
+      <text class="cls-3" transform="translate(824.55 709.16)"><tspan x="0" y="0">204</tspan></text>
+      <text class="cls-3" transform="translate(824.55 877.5)"><tspan x="0" y="0">104</tspan></text>
+      <rect class="cls-1" x=".5" y=".5" width="1500" height="1000"/>
+    </g>
+  </g>
+</svg>
