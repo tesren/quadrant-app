@@ -99,12 +99,27 @@
             </h1>
 
             <p class="fw-light fs-5 mb-5">
-                {{__('Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
-                [
-                    'bedrooms' => $unit->unitType->bedrooms,
-                    'bathrooms' => $unit->unitType->bathrooms,
-                    'area' => $unit->const_total
-                ])}}
+                @if($unit->unitType->flexrooms == 1)
+
+                    {{__('Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras + Flex, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
+                    [
+                        'bedrooms' => $unit->unitType->bedrooms,
+                        'flexrooms' => $unit->unitType->flexrooms,
+                        'bathrooms' => $unit->unitType->bathrooms,
+                        'area' => $unit->const_total
+                    ])}}
+
+                @else
+
+                    {{__('Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.', 
+                    [
+                        'bedrooms' => $unit->unitType->bedrooms,
+                        'bathrooms' => $unit->unitType->bathrooms,
+                        'area' => $unit->const_total
+                    ])}}
+                
+                @endif
+                
             </p>
 
             <h2>{{__('Características')}}</h2>
@@ -112,7 +127,7 @@
             <div class="row fs-5 fw-light mb-5">
 
                 <div class="col-12 col-lg-3 mb-1">
-                    <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}} {{__('Recámaras')}}
+                    <i class="fa-solid fa-bed"></i> {{$unit->unitType->bedrooms}} {{__('Recámaras')}} @if($unit->unitType->flexrooms == 1) + Flex @endif
                 </div>
 
                 <div class="col-12 col-lg-3 mb-1 col-xxl-2">
@@ -315,12 +330,19 @@
                 
                 <div class="mt-2">
                     <ul class="fs-6 fw-light">
-                        <li>
-                            {{__('El contrato de promesa de compraventa tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la solicitud de compra.')}}
-                        </li>
+
+                        @if ($unit->tower->private_presale == 0)
+                            <li>
+                                {{__('Se requiere un depósito de $200,000 MXN (doscientos mil pesos) para apartar la unidad, los cuales son 100% reembolsables en caso de no proceder con la compra de la unidad.')}}
+                            </li>
+                        @else
+                            <li>
+                                {{__('EL PLAN DE PAGO ESPECIAL es válido únicamente durante la preventa privada')}}
+                            </li>
+                        @endif
 
                         <li>
-                            {{__('Se requiere un depósito de $200,000 MXN (doscientos mil pesos) para apartar la unidad, los cuales son 100% reembolsables en caso de no proceder con la compra de la unidad.')}}
+                            {{__('El contrato de promesa de compraventa tendrá que firmarse en un plazo máximo de diez días a partir de la firma de la solicitud de compra.')}}
                         </li>
 
                         <li>

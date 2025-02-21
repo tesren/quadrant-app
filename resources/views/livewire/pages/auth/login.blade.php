@@ -36,7 +36,7 @@
             </h1>
 
             <p class="mb-4">
-                {{__('Bienvenido a la preventa privada de Quadrant Torre 3000')}}
+                {{__('Bienvenido a la preventa privada de Quadrant Torre Elara')}}
             </p>
         
             <!-- Session Status -->

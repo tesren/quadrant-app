@@ -43,10 +43,10 @@
                                         <li>
                                             @if ($tower->private_presale == 1)
                                                 @auth
-                                                    <a class="dropdown-item fw-bold" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}} ({{__('Preventa privada')}})</a>
+                                                    <a wire:navigate class="dropdown-item fw-bold" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}} ({{__('Preventa privada')}})</a>
                                                 @endauth
                                             @else
-                                                <a class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
+                                                <a wire:navigate class="dropdown-item" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
                                             @endif
                                         </li>
                                     @endforeach

@@ -34,16 +34,16 @@
             <h1 style="text-align: center;">
                 {{__('BIENVENIDO')}} <br>
                 {{__('Pre-Venta Privada Especial')}} <br>
-                {{__('Quadrant Torre 300')}}
+                {{__('Quadrant Torre Elara')}}
             </h1>
 
             <h2>Estimado(a) {{$user->name}}</h2>
 
             <p>Esperamos que al recibir este correo, usted y su familia se encuentren muy bien.</p>
 
-            <p>En Domus nos enorgullece informarle que finalmente ha llegado el momento de salir a la preventa privada especial de Quadrant Torre 300, que es exclusiva para las personas que como usted, solicitaron ser incluidos en este evento exclusivo.</p>
+            <p>En Domus nos enorgullece informarle que finalmente ha llegado el momento de salir a la preventa privada especial de Quadrant Torre Elara, que es exclusiva para las personas que como usted, solicitaron ser incluidos en este evento exclusivo.</p>
 
-            <p>A partir de este momento, usted podrá ingresar al sitio especial Quadrant Torre 300 <a href="https://www.quadrantrn.com.mx/login">https://www.quadrantrn.com.mx/login</a>, en donde podrá encontrar información detallada</p>
+            <p>A partir de este momento, usted podrá ingresar al sitio especial Quadrant Torre Elara <a href="https://www.quadrantrn.com.mx/login">https://www.quadrantrn.com.mx/login</a>, en donde podrá encontrar información detallada</p>
             
             <p>
                 {{__('Correo')}}: {{ $user->email }}<br>
@@ -63,17 +63,17 @@
             <h1 style="text-align: center;">
                 {{__('WELCOME')}} <br>
                 {{__('Special Private Presale')}} <br>
-                {{__('Quadrant Tower 300')}}
+                {{__('Quadrant Tower Elara')}}
             </h1>
 
             <h2>Dear {{$user->name}}:</h2>
 
             <p>We hope that upon receiving this email, you and your family are doing very well.</p>
             
-            <p>We at Domus are proud to inform you that the time has finally come to go on the special private presale of Quadrant Torre 300, which is exclusive for people like you, who requested to be included in this exclusive event.</p>
+            <p>We at Domus are proud to inform you that the time has finally come to go on the special private presale of Quadrant Tower Elara, which is exclusive for people like you, who requested to be included in this exclusive event.</p>
             
             
-            <p>From this moment on, you will be able to enter the special Quadrant Torre 300 site <a href="https://www.quadrantrn.com.mx/en/login">https://www.quadrantrn.com.mx/en/login</a>, where you will be able to find detailed information</p>
+            <p>From this moment on, you will be able to enter the special Quadrant Tower Elara site <a href="https://www.quadrantrn.com.mx/en/login">https://www.quadrantrn.com.mx/en/login</a>, where you will be able to find detailed information</p>
             <p>
                 Email: {{ $user->email }}<br>
                 Password: {{ $generatedPass }}<br>

@@ -196,7 +196,7 @@
                     
                                 @foreach ($intersected_units as $unit)
                     
-                                    <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
+                                    <a wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
                                         <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
                                         </polygon>
                                         
@@ -226,7 +226,7 @@
         
                     @foreach ($units as $unit)
         
-                        <a class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
+                        <a wire:navigate class="text-decoration-none link-light {{ strtolower($unit->status) }}-class @if($unit->status=='Bloqueada') disabled @endif" @if($unit->status != 'Bloqueada') href="{{route('pages.unit', array_merge(['name' => $unit->name], request()->query()) ) }}" @endif @if($unit->status=='Bloqueada') role="button" aria-disabled="true" @endif>
                             <polygon class="" points="{{$unit->shape->points ?? '0,0'}}">    
                             </polygon>
                             
