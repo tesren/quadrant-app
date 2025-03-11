@@ -137,6 +137,13 @@ class SendLoginData extends Action
                             $user_mod = User::find($user->id);
                             $user_mod->password = Hash::make($generatedPass);
                             $user_mod->save();
+
+                            $mail = new Email();
+                            $mail->user_id = $user->id;
+                            $mail->agent_id = auth()->user()->id;
+                            $mail->email = $user->email;
+                            $mail->password = $generatedPass;
+                            $mail->save();
                         }
 
                         

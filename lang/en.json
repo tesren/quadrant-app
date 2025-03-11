@@ -13,7 +13,7 @@
     "Precio" : "Price",
     "Recámaras" : "Bedrooms",
     "Baños" : "Bathrooms",
-    "Precios desde" : "Prices from",
+    "Precios desde" : "Starting at",
     "Elige uno" : "Select one",
     "Torre" : "Tower",
     "Buscar" : "Search",
@@ -688,5 +688,9 @@
     "Preventa privada" : "Private Presale",
     "Secciones de la Torre" : "Sections of Tower",
     "Bienvenido a la preventa privada de Quadrant Torre Elara" : "Welcome to the private presale of Quadrant Tower Elara",
-    "Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras + Flex, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.": "Incredible condominium that fuses luxury and comfort. With a spacious and contemporary design, this property offers :bedrooms bedrooms + Flex, :bathrooms bathrooms, and a total of :area sq ft. Enjoy amazing common areas with splendid environments, all in an exclusive location in Bucerías, Nayarit. Experience a high-end coastal lifestyle at Quadrant Luxury Ocean Living."
+    "Increíble condominio que fusiona lujo y confort. Con un diseño amplio y contemporáneo, esta propiedad ofrece :bedrooms recámaras + Flex, :bathrooms baños, y un total de :area m². Disfruta de asombrosas áreas comunes con espléndidos ambientes, todo en una ubicación exclusiva en Bucerías, Nayarit. Experimenta un estilo de vida costero de primer nivel en Quadrant Luxury Ocean Living.": "Incredible condominium that fuses luxury and comfort. With a spacious and contemporary design, this property offers :bedrooms bedrooms + Flex, :bathrooms bathrooms, and a total of :area sq ft. Enjoy amazing common areas with splendid environments, all in an exclusive location in Bucerías, Nayarit. Experience a high-end coastal lifestyle at Quadrant Luxury Ocean Living.",
+    "Tour virtual" : "Virtual Tour",
+    "Unidad Modelo de Torre Elara": "Model Unit of Tower Elara",
+    "¡Nueva torre en preventa!" : "New tower for pre-sale!"
+
 }

@@ -32,12 +32,7 @@ Route::localized(function () {
 
     //Route::get( Lang::uri('/inventario').'/{slug}', InventoryPage::class)->name('pages.inventory');
 
-    Route::get(Lang::uri('/inventario').'/{slug}', function ($slug) {
-        if ($slug === 'elara' && !Auth::check()) {
-            abort(404); // Bloquear acceso si no está autenticado
-        }
-        return app(InventoryPage::class)->__invoke($slug);
-    })->name('pages.inventory');
+    Route::get(Lang::uri('/inventario').'/{slug}', InventoryPage::class )->name('pages.inventory');
 
     Route::get( Lang::uri('/estilo-de-vida'), LifestylePage::class)->name('pages.lifestyle');
     Route::get( Lang::uri('/contacto'), ContactPage::class)->name('pages.contact');

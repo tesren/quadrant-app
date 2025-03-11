@@ -9,30 +9,44 @@
     {{-- Inicio --}}
     <div class="position-relative mb-6">
 
-        <div class="row position-absolute justify-content-center top-0 start-0 h-100">
+        <div class="fondo-oscuro"></div>
+
+        <div class="row position-absolute justify-content-center top-0 start-0 h-100 z-3">
             
-            <div class="col-11 col-lg-5 col-xxl-4 mt-6 text-center align-self-start" style="background-image: url('{{asset('/img/home-vector.webp')}}'); background-repeat:no-repeat; background-size: 100% 100%;">
-                <h1 class="fs-2 mb-2 pt-3">{{__('Una vida maravillosa entre la brisa del mar, diversión y confort.')}}</h1>
-                <p class="fs-5 fw-light">{{__('Rodeado de vitalidad y relajación')}}</p>
+            <div class="col-12 col-lg-6 col-xxl-5 text-center align-self-center text-white">
+
+                <img class="mx-auto d-block col-10 col-lg-7 mb-2" src="{{asset('img/logo-quadrant-white.svg')}}" alt="Logo de Quadrant Luxury Ocean Living">
+                <h1 class="fs-1 mb-4">{{__('Torre')}} Elara</h1>
+                <div class="fs-1 mb-4">
+                    <p class="mb-0">{{__('¡Nueva torre en preventa!')}}</p>
+                    <p>{{__('Precios desde')}} ${{ number_format($lowest_unit->price) }} {{$lowest_unit->currency}}</p>
+                </div>
+
+                <a href="{{ route('pages.inventory', ['slug' => 'elara', 'contact'=>$contact] ) }}" class="btn btn-light rounded-pill px-5 fw-bold fs-5">
+                    <i class="fa-solid fa-building"></i> {{__('Ver inventario')}}
+                </a>
             </div>
 
         </div>
 
-        <img src="{{asset('img/home-gallery/common-areas-1.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
+        <picture>
+            {{-- Imagen para pantallas de escritorio --}}
+            <source media="(min-width: 768px)" srcset="{{asset('/img/new-home-quadrant.webp')}}">
 
-        <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block">
-            <a href="{{route('pages.search', request()->query())}}" wire:navigate class="btn btn-light rounded-pill px-4 px-lg-5 fs-5 shadow">
-                <i class="fa-solid fa-building"></i> {{__('Inventario')}}
-            </a>
-        </div>
+            {{-- Imagen para pantallas de teléfono --}}
+            <source media="(max-width: 767px)" srcset="{{asset('/img/home-gallery/common-areas-1.webp')}}">
+            
 
-        <div class="position-absolute bottom-0 start-50 mb-5 d-none d-lg-block">
+            <img src="{{asset('/img/new-home-quadrant.webp')}}" alt="Quadrant Luxury Ocean Living" class="w-100 object-fit-cover home-img">
+        </picture>
+
+        <div class="position-absolute bottom-0 start-0 mb-5 ms-5 d-none d-lg-block z-3">
             <a href="#info" class="btn btn-light rounded-pill px-4 fs-5 shadow">
                 <i class="fa-regular fa-circle-down"></i> {{__('Ver más')}}
             </a>
         </div>
 
-        <img class="position-absolute px-0 end-0 bottom-0" width="150px" src="{{asset('/img/whatsapp-bg-white.webp')}}" alt="">
+        {{-- <img class="position-absolute px-0 end-0 bottom-0" width="150px" src="{{asset('/img/whatsapp-bg-white.webp')}}" alt=""> --}}
     </div>
 
     <div class="text-center mb-6 d-block d-lg-none">
@@ -86,6 +100,16 @@
         @endfor
 
     </div>
+
+    {{-- Recorrido virtual Unidad modelo --}}
+    <div class="row justify-content-center mb-6">
+        <div class="col-12 col-lg-11 col-xxl-10">
+            <h3 class="fs-1 text-center mb-1">{{__('Tour virtual')}}</h3>
+            <p class="text-center fs-4 fw-light mb-4">{{__('Unidad Modelo de Torre Elara')}}</p>
+            <iframe src="https://my.matterport.com/show/?m=By7LsLtgD65" frameborder="0" width="100%" height="600px" class="rounded-4"></iframe>
+        </div>
+    </div>
+
 
     {{-- Amenidades --}}
     <div class="row justify-content-evenly mb-6">
@@ -165,26 +189,26 @@
             </div>
 
             <div class="position-relative z-2 pt-2 pt-lg-0 ps-1 ps-lg-0">
-                <img src="{{asset('img/master-plan.webp')}}" alt="Master plan de Quadrant" class="w-100">
+                <img src="{{asset('img/master-plan-new.webp')}}" alt="Master plan de Quadrant" class="w-100">
                 {{-- pins --}}
-                <img src="{{asset('img/amenities/pickle-pin.svg')}}" class="amenity-pin" style="top: 65%; left:35%;" alt="" data-bs-toggle="tooltip" data-bs-title="Pickleball">
-                <img src="{{asset('img/amenities/bar-pin.svg')}}" class="amenity-pin" style="top: 25%; left:55%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Bar de piscina & snacks')}}">
-                <img src="{{asset('img/amenities/palapa-pin.svg')}}" class="amenity-pin" style="top: 17%; left:50%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Restaurante tipo palapa')}}">
-                <img src="{{asset('img/amenities/pool-pin.svg')}}" class="amenity-pin" style="top: 26%; left:44.5%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Alberca grande')}}">
-                <img src="{{asset('img/amenities/spa-pin.svg')}}" class="amenity-pin" style="top: 47%; left:33.5%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Spa al aire libre')}}">
-                <img src="{{asset('img/amenities/gym-pin.svg')}}" class="amenity-pin" style="top: 49%; left:42%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Gimnasio')}}">
-                <img src="{{asset('img/amenities/hamaca-pin.svg')}}" class="amenity-pin" style="top: 62%; left:51%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Hamacas')}}">
-                <img src="{{asset('img/amenities/business-pin.svg')}}" class="amenity-pin" style="top: 62%; left:83%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Centro de Negocios')}}">
+                <img src="{{asset('img/amenities/pickle-pin.svg')}}" class="amenity-pin" style="top: 68%; left:30%;" alt="" data-bs-toggle="tooltip" data-bs-title="Pickleball">
+                <img src="{{asset('img/amenities/bar-pin.svg')}}" class="amenity-pin" style="top: 33%; left:54%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Bar de piscina & snacks')}}">
+                <img src="{{asset('img/amenities/palapa-pin.svg')}}" class="amenity-pin" style="top: 27%; left:50.5%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Restaurante tipo palapa')}}">
+                <img src="{{asset('img/amenities/pool-pin.svg')}}" class="amenity-pin" style="top: 37%; left:45%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Alberca grande')}}">
+                <img src="{{asset('img/amenities/spa-pin.svg')}}" class="amenity-pin" style="top: 52%; left:28.5%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Spa al aire libre')}}">
+                <img src="{{asset('img/amenities/gym-pin.svg')}}" class="amenity-pin" style="top: 58%; left:37%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Gimnasio')}}">
+                <img src="{{asset('img/amenities/hamaca-pin.svg')}}" class="amenity-pin" style="top: 69%; left:43%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Hamacas')}}">
+                <img src="{{asset('img/amenities/business-pin.svg')}}" class="amenity-pin" style="top: 76%; left:73%;" alt="" data-bs-toggle="tooltip" data-bs-title="{{__('Centro de Negocios')}}">
             </div>
         </div>
 
         <div class="col-12 col-lg-6 col-xxl-4 position-relative z-2 align-self-center amenities-map-text mt-5 mt-lg-0">
 
             <h3 class="d-flex mb-0">
-                <div class="me-2 lh-1 fw-bold" style="font-size: 120px;">36</div>
+                <div class="me-2 lh-1 fw-bold" style="font-size: 120px;">45</div>
                 <div class="fw-light">
                     <div class="fs-1">{{__('Condominios de lujo')}}</div>
-                    {{__('Torre Himalia')}}
+                    {{__('Torre')}} Elara
                 </div>
             </h3>
 
