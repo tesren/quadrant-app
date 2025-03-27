@@ -16,6 +16,7 @@ class NavBar extends Component
     public $unit_name = '4101';
     public $tower_slug = 'himalia';
     public $route = '';
+    public $current_url = '';
 
     #[Url]
     public ?string $contact;
@@ -37,6 +38,7 @@ class NavBar extends Component
     public function mount()
     {
         $this->route = Route::currentRouteName();
+        $this->current_url = url()->current();
         $this->contact = request()->query('contact');
     }
 

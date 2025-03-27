@@ -18,6 +18,8 @@ class HomePage extends Component
 
     public function render()
     {
-        return view('livewire.pages.home-page')->layout('layouts.public-base');
+        $model_unit = Unit::find(65);
+
+        return view('livewire.pages.home-page', compact('model_unit' ))->layout('layouts.public-base');
     }
 }

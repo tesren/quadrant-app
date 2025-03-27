@@ -224,6 +224,11 @@ body{
     background-color: var(--blue);
 }
 
+.nav-tabs .nav-link {
+    border: 1px solid white;
+    color: white;
+}
+
 @media (max-width: 992px) {
 
     .mt-6{

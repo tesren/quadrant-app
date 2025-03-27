@@ -14,10 +14,10 @@
                 <img class="px-0 w-100" src="{{asset('img/bg-white-home.webp')}}" alt="" style="min-height: 160px; transform: scaleY(-1);">
 
                 <div class="position-absolute start-0 top-0 pt-3 ps-3 pt-lg-5 ps-lg-5 w-100">
-                    <h1>
-                        <span class="fs-5">{{__('Torre')}}</span>
-                        Himalia <i class="fa-solid fa-building"></i>
+                    <h1 class="fs-2">
+                        {{__('Búsqueda de unidades')}} <i class="fa-solid fa-magnifying-glass"></i>
                     </h1>
+
                     <div class="fs-3 mb-2 lh-1 col-11 d-none d-lg-block">{{__('Todas las comodidades en un solo lugar')}}</div>
                     <p class="fs-5 fw-light col-9 col-lg-11">{{__('Selecciona las características de la unidad que deseas y comprueba disponibilidad')}}</p>
 

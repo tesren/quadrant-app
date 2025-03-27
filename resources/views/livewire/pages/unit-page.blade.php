@@ -11,7 +11,9 @@
     @endsection
 
     @php
-        $images = $unit->unitType->getMedia('gallery');
+        $type_images = $unit->unitType->getMedia('gallery');
+        $unit_images = $unit->getMedia('unitgallery');
+        $total_images = count($type_images) + count($unit_images);
 
         $blueprints = $unit->getMedia('blueprint');
 
@@ -44,19 +46,26 @@
 
     {{-- Inicio --}}
     <div class="position-relative">
-        @if ( count($images) > 0 )
-            <img src="{{ $images[0]->getUrl('large') }}" alt="{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 80vh;" data-fancybox="gallery">
+        @if ( count($type_images) > 0 )
+            <img src="{{ $type_images[0]->getUrl('large') }}" alt="{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living" class="w-100 object-fit-cover" style="height: 80vh;" data-fancybox="gallery">
 
-            @for ($i=1; $i < count($images); $i++)
-                <img src="{{ $images[$i]->getUrl('large') }}" alt="{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery">
+            @for ($i=1; $i < count($type_images); $i++)
+                <img src="{{ $type_images[$i]->getUrl('large') }}" alt="{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery">
             @endfor
             
         @endif
 
+        @if ( count($unit_images) > 0)
+
+            @foreach ($unit_images as $img)
+                <img src="{{ $img->getUrl('large') }}" alt="{{__('Condominio')}} {{$unit->name}} - Quadrant Luxury Ocean Living" class="d-none" data-fancybox="gallery">
+            @endforeach
+            
+        @endif
         
 
         <a href="#gallery" class="badge bg-white rounded-pill fw-light fs-4 position-absolute start-0 bottom-0 ms-1 ms-lg-5 mb-3 mb-lg-5 text-blue text-decoration-none">
-            <i class="fa-regular fa-images"></i> 1/{{count($images)}}
+            <i class="fa-regular fa-images"></i> 1/{{ $total_images }}
         </a>
 
         <img width="50px" src="{{asset('/img/quadrant-logo-icon-white.svg')}}" alt="" class="position-absolute top-0 end-0 m-4 m-lg-5">

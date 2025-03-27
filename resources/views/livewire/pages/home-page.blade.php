@@ -102,12 +102,82 @@
     </div>
 
     {{-- Recorrido virtual Unidad modelo --}}
-    <div class="row justify-content-center mb-6">
-        <div class="col-12 col-lg-11 col-xxl-10">
-            <h3 class="fs-1 text-center mb-1">{{__('Tour virtual')}}</h3>
-            <p class="text-center fs-4 fw-light mb-4">{{__('Unidad Modelo de Torre Elara')}}</p>
-            <iframe src="https://my.matterport.com/show/?m=By7LsLtgD65" frameborder="0" width="100%" height="600px" class="rounded-4"></iframe>
+    <div class="row justify-content-center mb-6 py-5 bg-blue-gradient">
+
+        <div class="col-12 col-lg-5 pe-2 pe-lg-5 align-self-center text-center text-lg-start mb-4 mb-lg-0">
+            <h3 class="fs-1 mb-1">{{__('Unidad modelo')}}</h3>
+            <div class="fs-4 fw-light mb-2">{{__('Descubre la esencia de vivir en Quadrant')}}</div>
+            <p class="fs-5 fw-light mb-4 text-start">
+                {{__('Déjate sorprender por cada detalle de nuestra unidad modelo, diseñada para ofrecer confort, estilo y funcionalidad en perfecta armonía con el estilo de vida en la costa. Haz clic en la galería de imágenes o sumérgete en el tour virtual para recorrerla a tu ritmo como si ya estuvieras ahí.')}}
+            </p>
         </div>
+
+        <div class="col-12 col-lg-5">
+
+            <ul class="nav nav-tabs border-bottom-0" id="quadrantTab" role="tablist">
+
+                <li class="nav-item me-1" role="presentation">
+                    <button class="nav-link active fs-5" id="gallery-tab" data-bs-toggle="tab" data-bs-target="#gallery-tab-pane" type="button" role="tab" aria-controls="gallery-tab-pane" aria-selected="true">
+                        {{__('Galería')}}
+                    </button>
+                </li>
+                
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fs-5" id="tour-tab" data-bs-toggle="tab" data-bs-target="#tour-tab-pane" type="button" role="tab" aria-controls="tour-tab-pane" aria-selected="false">
+                        {{__('Tour Virtual')}}
+                    </button>
+                </li>
+
+            </ul>
+
+            <div class="tab-content" id="quadrantTabContent">
+
+                <div class="tab-pane fade show active rounded-end-3 rounded-bottom-3 overflow-hidden shadow" id="gallery-tab-pane" role="tabpanel" aria-labelledby="gallery-tab" tabindex="0">
+                    @php
+                        $model_type_imgs = $model_unit->unitType->getMedia('gallery');
+                        $model_imgs = $model_unit->getMedia('unitgallery');
+                    @endphp
+
+                    <div id="carouselExample" class="carousel slide">
+
+                        <div class="carousel-inner">
+
+                            @for ($j=0; $j<count($model_type_imgs); $j++)
+                                <div class="carousel-item {{ $j==0 ? 'active' : '' }}">
+                                    <img src="{{ $model_type_imgs[$j]->getUrl('medium') }}" class="d-block w-100 object-fit-cover" style="max-height:500px;" alt="{{__('Unidad modelo')}} de Quadrant Luxury Ocean Living Bucerías">
+                                </div>
+                            @endfor
+
+                            @for ($i=0; $i<count($model_imgs); $i++)
+                                <div class="carousel-item">
+                                    <img src="{{ $model_imgs[$i]->getUrl('medium') }}" class="d-block w-100 object-fit-cover" style="max-height:500px;" alt="{{__('Unidad modelo')}} de Quadrant Luxury Ocean Living Bucerías">
+                                </div>
+                            @endfor
+                            
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div class="tab-pane fade overflow-hidden" id="tour-tab-pane" role="tabpanel" aria-labelledby="tour-tab" tabindex="0">
+                    <iframe src="https://my.matterport.com/show/?m=By7LsLtgD65" frameborder="0" width="100%" height="500px" class="rounded-end-3 rounded-bottom-3"></iframe>
+                </div>
+
+            </div>
+            
+        </div>
+
     </div>
 
 

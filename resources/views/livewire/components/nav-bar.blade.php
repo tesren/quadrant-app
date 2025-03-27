@@ -32,8 +32,24 @@
                             <a class="nav-link fs-5 @if( strpos($route, 'home') != false) active @endif" href="{{route('pages.home', ['contact'=>$contact] )}}" wire:navigate>{{__('Inicio')}}</a>
                         </li>
 
+                        @foreach ($towers as $tower)
+                            <li class="nav-item mb-2 mb-xxl-0 me-0 me-lg-4">
+                                @if ($tower->private_presale == 1)
+                                    @auth
+                                        <a wire:navigate class="nav-link fs-5 @if( strpos($current_url, $tower->slug) != false) active @endif" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}} ({{__('Preventa privada')}})</a>
+                                    @endauth
+                                @else
+                                    <a wire:navigate class="nav-link fs-5 @if( strpos($current_url, $tower->slug) != false) active @endif" href="{{ route('pages.inventory', ['slug' => $tower->slug, 'contact'=>$contact]) }}">{{__('Torre')}} {{$tower->name}}</a>
+                                @endif
+                            </li>
+                        @endforeach
 
-                        @if (count($towers) > 1)
+                        <li class="nav-item mb-2 mb-xxl-0 me-0 me-lg-4">
+                            <a class="nav-link fs-5 @if( strpos($route, 'search') != false) active @endif" wire:navigate href="{{ route('pages.search') }}">{{__('Buscar')}}</a>
+                        </li>
+
+
+                        {{-- @if (count($towers) > 1)
                             <li class="nav-item dropdown me-0 me-lg-4 mb-2 mb-xxl-0">
                                 <a class="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{__('Inventario')}}
@@ -60,7 +76,7 @@
                             <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
                                 <a class="nav-link fs-5 @if( strpos($route, 'inventory') != false) active @endif" href="{{route('pages.inventory', ['slug'=> 'himalia', 'contact'=>$contact] )}}" wire:navigate>{{__('Inventario')}}</a>
                             </li>
-                        @endif
+                        @endif --}}
 
 
                         <li class="nav-item me-0 me-lg-4 mb-2 mb-xxl-0">
