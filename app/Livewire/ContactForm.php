@@ -23,6 +23,9 @@ class ContactForm extends Component
     #[Validate('required')] 
     public $email = '';
 
+    #[Validate('required')] 
+    public $contact_method = '';
+
     public $phone = '';
     public $message = '';
     public $url = '';
@@ -50,6 +53,7 @@ class ContactForm extends Component
         $msg->name = $this->full_name;
         $msg->email = $this->email;
         $msg->phone = $this->phone;
+        $msg->method = $this->contact_method;
         $msg->content = $this->message;
         $msg->url = $this->url;
 
@@ -68,7 +72,7 @@ class ContactForm extends Component
         }
 
         //Envíamos webhook
-        $webhookUrl = 'https://n8n.punto401.com/webhook/7bed19ac-6acc-4233-8ca5-b6d72cdbf680';
+        $webhookUrl = 'https://cloud.punto401.com/webhook/7bed19ac-6acc-4233-8ca5-b6d72cdbf680';
 
         // Datos que deseas enviar en el cuerpo de la solicitud
         $data = [
@@ -76,6 +80,7 @@ class ContactForm extends Component
             'email' => $msg->email,
             'phone' => $msg->phone,
             'url' => $msg->url,
+            'method' => $msg->method,
             'content' => $msg->content,
             'interest' => 'Condominios',
             'development' => 'Quadrant',

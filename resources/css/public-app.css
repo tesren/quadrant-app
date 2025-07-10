@@ -139,6 +139,16 @@ body{
     background-color: transparent;
 }
 
+.form-select {
+    color: white;
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
 .home-img{
     height: 91vh;
 }

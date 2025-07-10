@@ -29,29 +29,39 @@
                     </div>
                 </div>
 
-                <div class="p-4 p-lg-5 bg-blue rounded-bottom-5 rounded-start-5">
+                <div class="p-4 p-lg-5 bg-blue rounded-bottom-5 rounded-start-5" data-bs-theme="dark">
                     <form wire:submit="save" id="lead_form">
                                 
                         <div class="row fs-5 fw-light">
                 
-                            <div class="col-12 d-flex mb-4">
+                            <div class="col-12 mb-3">
                                 <label for="full_name" class="me-3 align-self-center">{{__('Nombre')}}:</label>
                                 <input type="text" wire:model="full_name" id="full_name" class="form-control mb-3 @error('full_name') is-invalid @enderror" required>
                             </div>
                 
                             <x-honeypot/>
                 
-                            <div class="col-12 d-flex mb-4">
+                            <div class="col-12 mb-3">
                                 <label for="email" class="me-3 align-self-center">{{__('Correo')}}:</label>
                                 <input type="email" wire:model="email" id="email" class="form-control mb-3" required>
                             </div>
                 
-                            <div class="col-12 d-flex mb-4">
+                            <div class="col-12 mb-3">
                                 <label for="phone" class="me-3 align-self-center">{{__('Teléfono')}}:</label>
                                 <input type="tel" wire:model="phone" id="phone" class="form-control mb-3">
                             </div>
+
+                            <div class="col-12 mb-3">
+                                <label for="contact_method">{{__('¿Cómo le gustaría ser contactado?')}}</label>
+                                <select class="form-select mb-3" wire:model="contact_method" id="contact_method" required>
+                                    <option selected value="">{{__('Seleccione uno')}}</option>
+                                    <option value="Email">{{__('Email')}}</option>
+                                    <option value="Llamada">{{__('Llamada')}}</option>
+                                    <option value="WhatsApp">{{__('WhatsApp')}}</option>
+                                </select>                        
+                            </div>
                 
-                            <div class="col-12 d-flex mb-4">
+                            <div class="col-12 mb-3">
                                 <label for="phone" class="me-3">{{__('Notas')}}:</label>
                                 <textarea wire:model="message" id="message" cols="30" required class="form-control mb-4" rows="3"></textarea>
                             </div>
