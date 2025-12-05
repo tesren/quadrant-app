@@ -7,7 +7,7 @@
 
     @if ($contact != 'no')
 
-        <a id="whatsapp-btn" href="https://wa.me/523322005523?text={{ urlencode(__('Hola, vengo del sitio web de Quadrant')) }}" class="position-fixed bottom-0 end-0 z-3 m-3 d-none d-lg-block" data-bs-toggle="tooltip" data-bs-title="{{ __('¡Envíanos un mensaje!') }}" target="_blank" rel="noopener noreferrer">
+        <a id="whatsapp-btn" href="https://wa.me/52{{env('CONTACT_NUMBER')}}?text={{ urlencode(__('Hola, vengo del sitio web de Quadrant')) }}" class="position-fixed bottom-0 end-0 z-3 m-3 d-none d-lg-block" data-bs-toggle="tooltip" data-bs-title="{{ __('¡Envíanos un mensaje!') }}" target="_blank" rel="noopener noreferrer">
             <img width="70px" src="{{asset('img/whatsapp.webp')}}" alt="Contactar por WhatsApp">
         </a>
 
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="col-5 align-self-center">
-                    <a class="btn btn-blue w-100 fs-6 py-2" href="https://wa.me/5213322005523?text={{__("Hola, vengo del sitio web de Quadrant")}}" target="_blank" rel="noopener noreferrer">
+                    <a class="btn btn-blue w-100 fs-6 py-2" href="https://wa.me/52{{env('CONTACT_NUMBER')}}?text={{__("Hola, vengo del sitio web de Quadrant")}}" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
                 </div>
