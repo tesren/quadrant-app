@@ -61,7 +61,7 @@
                                 
                         <div class="form-floating mb-3 mb-lg-0">
         
-                            <select class="form-select" id="floor" wire:model="floor" aria-label="{{__('Piso')}}">
+                            <select class="form-select text-dark" id="floor" wire:model="floor" aria-label="{{__('Piso')}}">
                                 <option value="0">{{__('Cualquier piso')}}</option>
             
                                 @for ($i=1; $i<=5; $i++)
@@ -74,7 +74,7 @@
                         </div>
         
                         <div class="form-floating mb-3 mb-lg-0">
-                            <select class="form-select" id="bedrooms" wire:model="bedrooms" aria-label="{{__('Recámaras')}}">
+                            <select class="form-select text-dark" id="bedrooms" wire:model="bedrooms" aria-label="{{__('Recámaras')}}">
                                 <option value="0">{{__('Cualquier cantidad')}}</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-floating mb-3 mb-lg-0">
-                            <select class="form-select" id="tower_id" wire:model="tower_id" aria-label="{{__('Torre')}}">
+                            <select class="form-select text-dark" id="tower_id" wire:model="tower_id" aria-label="{{__('Torre')}}">
                                 <option value="0">{{__('Cualquier Torre')}}</option>
                                 
                                 @foreach ($towers as $twr)
@@ -108,7 +108,7 @@
                         </div> --}}
         
                         <div class="form-floating mb-3 mb-lg-0">
-                            <select class="form-select" id="min_price" wire:model="min_price" aria-label="{{__('Precio min.')}}">
+                            <select class="form-select text-dark" id="min_price" wire:model="min_price" aria-label="{{__('Precio min.')}}">
                                 <option value="1">{{__('Sin mínimo')}}</option>
                                 @php
                                     $minPriceStart = 6000000;
@@ -122,7 +122,7 @@
                         </div>
                         
                         <div class="form-floating mb-3 mb-lg-0">
-                            <select class="form-select" id="max_price" wire:model="max_price" aria-label="{{__('Precio max.')}}">
+                            <select class="form-select text-dark" id="max_price" wire:model="max_price" aria-label="{{__('Precio max.')}}">
                                 <option value="9999999999">{{__('Sin máximo')}}</option>
                                 @php
                                     $maxPriceStart = 7000000;
